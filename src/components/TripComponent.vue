@@ -25,6 +25,7 @@
                  v-bind:item="trip"
                  v-bind:index="index"
                  v-bind:key="trip._id"
+                 v-on:dblclick="deleteTrip(trip._id)"
             >
                 <div class="date">
                     <p>{{`${trip.date.getDate()}/${trip.date.getMonth()}/${trip.date.getFullYear()}`}}</p>
@@ -71,6 +72,10 @@
                 this.tripsCopy = this.trips.filter((trip) => {
                     return trip.name.toLowerCase().includes(this.searchWord.toLowerCase())
                 });
+            },
+            async deleteTrip(id) {
+                await TripService.deleteTrip(id);
+                this.trips = await TripService.getTrips();
             }
         }
     }
