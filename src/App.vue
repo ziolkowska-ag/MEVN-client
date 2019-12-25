@@ -7,6 +7,7 @@
 <script>
 import TripComponent from './components/TripComponent.vue'
 
+
 export default {
   name: 'app',
   components: {
