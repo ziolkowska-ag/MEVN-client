@@ -1,18 +1,12 @@
 <template>
   <div id="app">
-    <TripComponent />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import TripComponent from './components/TripComponent.vue'
-
-
 export default {
-  name: 'app',
-  components: {
-    TripComponent
-  }
+  name: 'app'
 }
 </script>
 

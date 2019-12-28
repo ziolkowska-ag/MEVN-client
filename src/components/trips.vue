@@ -49,7 +49,7 @@
     import TripService from "../TripService";
 
     export default {
-        name: 'TripComponent',
+        name: 'trips',
         static: {
             visibleItemsPerPageCount: 2
         },
