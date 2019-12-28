@@ -2,7 +2,6 @@
     <div class="container">
         <h1>Latest trips:</h1>
         <h1>Surprise motherfucker</h1>
-
     </div>
 </template>
 

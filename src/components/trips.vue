@@ -20,38 +20,50 @@
         <hr>
         <p class="error" v-if="error">{{error}}</p>
         <div class="trips-container">
-            <div class="trip"
-                 v-for="(trip, index) in tripsCopy"
-                 v-bind:item="trip"
-                 v-bind:index="index"
-                 v-bind:key="trip._id"
-            >
-                <div class="date">
+            <!--            <div class="trip"-->
+            <!--                 v-for="(trip, index) in tripsCopy"-->
+            <!--                 v-bind:item="trip"-->
+            <!--                 v-bind:index="index"-->
+            <!--                 v-bind:key="trip._id"-->
+            <!--            >-->
+            <!--                <div class="date">-->
+            <!--                    <p>{{`${trip.date.getDate()}/${trip.date.getMonth()}/${trip.date.getFullYear()}`}}</p>-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash;                TODO: implement onclick for name - go to trips page &ndash;&gt;-->
+            <!--                <p class="name">{{trip.name}}</p>-->
+            <!--                <p class="country">{{trip.country}}</p>-->
+            <!--                <p class="price">${{trip.price}}</p>-->
+            <!--                <div class="delete">-->
+            <!--                    <p v-on:dblclick="deleteTrip(trip._id)">x</p>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <carousel :perPage="1" :autoplay="true">
+                <slide v-for="(trip, index) in tripsCopy"
+                       v-bind:item="trip"
+                       v-bind:key="trip._id"
+                       v-bind:index="index"
+                >
                     <p>{{`${trip.date.getDate()}/${trip.date.getMonth()}/${trip.date.getFullYear()}`}}</p>
-                </div>
-                <!--                TODO: implement onclick for name - go to trips page -->
-                <p class="name">{{trip.name}}</p>
-                <p class="country">{{trip.country}}</p>
-                <p class="price">${{trip.price}}</p>
-                <div class="delete">
+                    <p class="name">{{trip.name}}</p>
+                    <p class="country">{{trip.country}}</p>
+                    <p class="price">${{trip.price}}</p>
                     <p v-on:dblclick="deleteTrip(trip._id)">x</p>
-                </div>
-            </div>
-            <div class="pagination">
-                <!--                TODO: implement pagination -->
-            </div>
-
+                </slide>
+            </carousel>
         </div>
     </div>
 </template>
 
 <script>
     import TripService from "../TripService";
+    import {Carousel, Slide} from 'vue-carousel';
+
 
     export default {
         name: 'trips',
-        static: {
-            visibleItemsPerPageCount: 2
+        components: {
+            Carousel,
+            Slide
         },
         data() {
             return {
