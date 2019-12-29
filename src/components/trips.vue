@@ -3,8 +3,8 @@
         <h1>Travel journal</h1>
         <div class="nav">
             <!-- todo navigation could potentially by a separate component to reuse on other pages -->
-            <button v-on:click="show">Add trip</button>
-            <button>Go to blog</button>
+            <button v-on:click="goTo('add')">Add trip</button>
+            <button v-on:click="goTo('blog')">Go to blog</button>
         </div>
         <div class="search-trip">
             <label for="search-trip">SEARCH..</label>
@@ -40,6 +40,7 @@
 <script>
     import TripService from "../TripService";
     import {Carousel, Slide} from 'vue-carousel';
+    import router from "../router";
 
 
     export default {
@@ -106,6 +107,9 @@
             async deleteTrip(id) {
                 await TripService.deleteTrip(id);
                 // this.trips = await TripService.getTrips();
+            },
+            goTo(location) {
+                router.push(location);
             }
         },
     }
