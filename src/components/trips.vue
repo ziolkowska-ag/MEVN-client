@@ -1,17 +1,6 @@
 <template>
     <div class="container">
         <h1>Travel journal</h1>
-        <!--        create trip here TODO: move to a separate component-->
-        <div class="create-trip" v-bind:class="{visible: isHidden}">
-            <label for="name">Name:</label>
-            <input type="text" id="name" v-model="name" placeholder="Name your trip..">
-            <label for="country">Country:</label>
-            <input type="text" id="country" v-model="country" placeholder="Where are you going..">
-            <label for="price">Price:</label>
-            <input type="text" id="price" v-model="price" placeholder="How much are you paying..">
-            <hr>
-            <button v-on:click="createTrip">Create!</button>
-        </div>
         <div class="nav">
             <!-- todo navigation could potentially by a separate component to reuse on other pages -->
             <button v-on:click="show">Add trip</button>
@@ -92,9 +81,6 @@
                     }
                 ],
                 tripsCopy: [],
-                isHidden: true,
-                currentPage: 0,
-                numOfPages: 0,
                 searchWord: '',
                 error: '',
                 name: '',
@@ -112,10 +98,6 @@
             }
         },
         methods: {
-            async createTrip() {
-                await TripService.createTrip(this.name, this.country, this.price);
-                // this.trips = await TripService.getTrips();
-            },
             searchTrip() {
                 this.tripsCopy = this.trips.filter((trip) => {
                     return trip.name.toLowerCase().includes(this.searchWord.toLowerCase())
@@ -124,11 +106,7 @@
             async deleteTrip(id) {
                 await TripService.deleteTrip(id);
                 // this.trips = await TripService.getTrips();
-            },
-            show() {
-                this.isHidden = false;
             }
-
         },
     }
 </script>
@@ -144,7 +122,7 @@
         color: #8dd6d0;
     }
 
-    .create-trip, .search-trip {
+    .search-trip {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -153,10 +131,6 @@
 
     .search-trip > input {
         width: 50%;
-    }
-
-    .visible {
-        display: none;
     }
 
     p.error {
