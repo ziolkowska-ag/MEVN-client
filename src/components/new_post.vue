@@ -1,24 +1,20 @@
 <template>
-    <form class="create-trip">
+    <form class="create-post">
         <ul class="container">
             <li class="form-row">
                 <label for="name">Name:</label>
-                <input type="text" id="name" v-model="name" placeholder="Name your trip..">
+                <input type="text" id="name" v-model="name" placeholder="Name your post..">
             </li>
             <li class="form-row">
-                <label for="country">Country:</label>
-                <input type="text" id="country" v-model="country" placeholder="Where are you going..">
-            </li>
-            <li class="form-row">
-                <label for="price">Price:</label>
-                <input type="text" id="price" v-model="price" placeholder="How much are you paying..">
+                <label for="country">Content:</label>
+                <input type="text" id="country" v-model="text" placeholder="Say something..">
             </li>
             <li class="form-row">
                 <label for="date">Date:</label>
                 <input type="date" id="date" v-model="date">
             </li>
             <li class="form-row">
-                <button v-on:click="createTrip">Create!</button>
+                <button v-on:click="createPost">Create!</button>
                 <button v-on:click="goTo('/')">Go home!</button>
             </li>
         </ul>
@@ -109,7 +105,7 @@
         justify-content: center;
         padding: .5em;
     }
-    
+
     @media (max-width: 600px) {
         .form-row {
             flex-direction: column;
