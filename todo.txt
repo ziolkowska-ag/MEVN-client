@@ -1,0 +1,11 @@
+TODO:
+- add binding between user and trips + blog posts
+- maybe add possibility to view other users trips and blog posts ?
+- add profile component
+- add possibility to add and view blog posts
+- add possibility to add and view trips
+- can styles be separate?
+- sort trips by date on main page
+- rename trips co main or home
+- create component for trips only
+- refactor model and route for trips

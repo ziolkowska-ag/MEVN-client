@@ -19,7 +19,6 @@
             </li>
             <li class="form-row">
                 <button v-on:click="createTrip">Create!</button>
-                <button v-on:click="goTo('/')">Go home!</button>
             </li>
         </ul>
     </form>
@@ -33,37 +32,6 @@
         name: 'new_trip',
         data() {
             return {
-                trips: [
-                    {
-                        id: "1",
-                        name: "Lorem ipsum",
-                        country: "Germany",
-                        price: "129.99",
-                        date: new Date("2019-12-21T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "2",
-                        name: "Lorem pisum",
-                        country: "France",
-                        price: "1299.99",
-                        date: new Date("2019-12-10T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "3",
-                        name: "Lorem cremsum",
-                        country: "Germany",
-                        price: "1209.99",
-                        date: new Date("2019-12-09T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "4",
-                        name: "Lorem pipisium",
-                        country: "Germany",
-                        price: "12009.99",
-                        date: new Date("2020-12-21T18:30:41.075+00:00")
-                    }
-                ],
-                tripsCopy: [],
                 error: '',
                 name: '',
                 country: '',
@@ -71,20 +39,10 @@
                 date: ''
             }
         },
-        async created() {
-            try {
-                // this.trips = await TripService.getTrips();
-                this.tripsCopy = this.trips;
-
-            } catch (error) {
-                this.error = error.message;
-            }
-        },
         methods: {
-            async createTrip() {
-                await TripService.createTrip(this.name, this.country, this.price);
-                // this.trips = await TripService.getTrips();
-                await router.push('trips');
+            createTrip() {
+                TripService.createTrip(this.name, this.country, this.price);
+                this.goTo('/trips');
             },
             goTo(location) {
                 router.push(location);

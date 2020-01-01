@@ -24,6 +24,12 @@
                     <router-link class="nav-link" to="/blog">Blog</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
+                    <router-link class="nav-link" to="/add">Add trip</router-link>
+                </li>
+                <li v-if="auth ==='loggedin'" class="nav-item">
+                    <router-link class="nav-link" to="/trips">Trips</router-link>
+                </li>
+                <li v-if="auth ==='loggedin'" class="nav-item">
                     <a href="" class="nav-link" v-on:click="logout">Logout</a>
                 </li>
             </ul>

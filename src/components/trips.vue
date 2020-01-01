@@ -1,11 +1,6 @@
 <template>
     <div class="container">
         <h1>Travel journal</h1>
-        <!--        <div class="nav">-->
-        <!--            &lt;!&ndash; todo navigation could potentially by a separate component to reuse on other pages &ndash;&gt;-->
-        <!--            <button v-on:click="goTo('add')">Add trip</button>-->
-        <!--            <button v-on:click="goTo('blog')">Go to blog</button>-->
-        <!--        </div>-->
         <div class="search-trip">
             <label for="search-trip">SEARCH..</label>
             <input type="search" v-on:keyup="searchTrip" v-model="searchWord" id="search-trip">
@@ -13,7 +8,6 @@
         <hr>
         <p class="error" v-if="error">{{error}}</p>
         <h3>Coming soon:</h3>
-        <!-- todo: sort by date -->
         <div class="trips-container">
             <carousel :perPage="1"
                       :autoplay="true"
@@ -50,47 +44,24 @@
         },
         data() {
             return {
-                trips: [
-                    {
-                        id: "1",
-                        name: "Lorem ipsum",
-                        country: "Germany",
-                        price: "129.99",
-                        date: new Date("2019-12-21T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "2",
-                        name: "Lorem pisum",
-                        country: "France",
-                        price: "1299.99",
-                        date: new Date("2019-12-10T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "3",
-                        name: "Lorem cremsum",
-                        country: "Germany",
-                        price: "1209.99",
-                        date: new Date("2019-12-09T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "4",
-                        name: "Lorem pipisium",
-                        country: "Germany",
-                        price: "12009.99",
-                        date: new Date("2020-12-21T18:30:41.075+00:00")
-                    }
-                ],
+                trips: [],
                 tripsCopy: [],
                 searchWord: '',
                 error: '',
-                name: '',
-                country: '',
-                price: '',
             }
         },
         async created() {
             try {
-                // this.trips = await TripService.getTrips();
+                this.trips = await TripService.getTrips();
+                this.tripsCopy = this.trips;
+
+            } catch (error) {
+                this.error = error.message;
+            }
+        },
+        async updated() {
+            try {
+                this.trips = await TripService.getTrips();
                 this.tripsCopy = this.trips;
 
             } catch (error) {
@@ -105,7 +76,7 @@
             },
             async deleteTrip(id) {
                 await TripService.deleteTrip(id);
-                // this.trips = await TripService.getTrips();
+                this.trips = await TripService.getTrips();
             },
             goTo(location) {
                 router.push(location);

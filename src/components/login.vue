@@ -42,7 +42,7 @@
                     localStorage.setItem('usertoken', res.data);
                     this.email = '';
                     this.password = '';
-                    router.push({name: 'trips'})
+                    router.push('/trips');
                 }).catch();
                 this.emitMethod();
             },
