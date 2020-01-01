@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <h1>Travel journal</h1>
-        <div class="nav">
-            <!-- todo navigation could potentially by a separate component to reuse on other pages -->
-            <button v-on:click="goTo('add')">Add trip</button>
-            <button v-on:click="goTo('blog')">Go to blog</button>
-        </div>
+        <!--        <div class="nav">-->
+        <!--            &lt;!&ndash; todo navigation could potentially by a separate component to reuse on other pages &ndash;&gt;-->
+        <!--            <button v-on:click="goTo('add')">Add trip</button>-->
+        <!--            <button v-on:click="goTo('blog')">Go to blog</button>-->
+        <!--        </div>-->
         <div class="search-trip">
             <label for="search-trip">SEARCH..</label>
             <input type="search" v-on:keyup="searchTrip" v-model="searchWord" id="search-trip">
@@ -41,7 +41,6 @@
     import TripService from "../TripService";
     import {Carousel, Slide} from 'vue-carousel';
     import router from "../router";
-
 
     export default {
         name: 'trips',
@@ -117,8 +116,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    div.container {
-        max-width: 800px;
+
+    .container {
+        padding-top: 5rem;
+    }
+    .trips-container {
+        max-width: 700px;
         margin: auto;
     }
 

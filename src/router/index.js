@@ -4,6 +4,8 @@ import trips from '../components/trips';
 import single_trip from '../components/single_trip';
 import blog from '../components/blog';
 import new_trip from "../components/new_trip";
+import login from "../components/login";
+import register from "../components/register";
 
 Vue.use(VueRouter);
 
@@ -13,6 +15,11 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
+            name: 'login',
+            component: login
+        },
+        {
+            path: '/trips',
             name: 'trips',
             component: trips
         },
@@ -31,6 +38,16 @@ const router = new VueRouter({
             name: 'add',
             component: new_trip
         },
+        {
+            path: '/login',
+            name: 'login',
+            component: login
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: register
+        }
 
     ]
 });
