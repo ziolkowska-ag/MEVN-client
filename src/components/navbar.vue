@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <nav class="navbar navbar-expand-lg navbar-light rounded">
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -61,3 +61,9 @@
         }
     }
 </script>
+
+<style scope>
+    .navbar {
+        background-color: #8dd6d0;
+    }
+</style>

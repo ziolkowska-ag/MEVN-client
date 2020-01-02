@@ -18,10 +18,10 @@
                        v-bind:index="index"
                 >
                     <div class="slide-content">
-                        <p>{{`${post.date.getDate()}/${post.date.getMonth()}/${post.date.getFullYear()}`}}</p>
+                        <p>{{`${post.date.getDate()}/${post.date.getMonth()+1}/${post.date.getFullYear()}`}}</p>
                         <p class="name">{{post.name}}</p>
                         <p class="text">{{post.text}}</p>
-                        <p v-on:dblclick="deletePost(post._id)">x</p>
+                        <p class="delete" v-on:dblclick="deletePost(post._id)">x</p>
                     </div>
                 </slide>
             </carousel>
@@ -44,7 +44,23 @@
         data() {
             return {
                 title: 'Blog',
-                posts: [],
+                posts: [
+                    {
+                        date: new Date(),
+                        name: "dupa",
+                        text: "z trupa"
+                    },
+                    {
+                        date: new Date(),
+                        name: "dupa",
+                        text: "z trupa"
+                    },
+                    {
+                        date: new Date(),
+                        name: "dupa",
+                        text: "z trupa"
+                    }
+                ],
                 postsCopy: [],
                 searchWord: '',
                 error: '',
@@ -52,7 +68,7 @@
         },
         async created() {
             try {
-                this.posts = await PostService.getPosts();
+                //this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
@@ -61,7 +77,7 @@
         },
         async updated() {
             try {
-                this.posts = await PostService.getPosts();
+                //this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
@@ -76,7 +92,7 @@
             },
             async deletePost(id) {
                 await PostService.deletePost(id);
-                this.posts = await PostService.getPosts();
+                //this.posts = await PostService.getPosts();
             },
             goTo(location) {
                 router.push(location);
@@ -98,9 +114,13 @@
 
     h1 {
         color: #8dd6d0;
+        font-weight: bold;
+        font-size: 55px;
+        text-decoration: underline #2c3e50;
     }
 
     .search-post {
+        padding-top: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -108,7 +128,9 @@
     }
 
     .search-post > input {
-        width: 50%;
+        width: 25%;
+        border: 1px solid #4a6b63;
+        border-radius: 5px;
     }
 
     p.error {
@@ -118,11 +140,13 @@
         margin-bottom: 15px;
     }
 
-    .slide-content, .nav > button {
+    .slide-content {
         border: 1px solid #4a6b63;
-        border-radius: 60px;
+        border-radius: 5px;
+        box-shadow: 0 0 1em #4a6b63;
         background-color: #8dd6d0;
         margin-bottom: 15px;
+        padding-top: 10px;
     }
 
     h3 {
@@ -135,5 +159,19 @@
         margin-bottom: 0;
         cursor: pointer;
         color: whitesmoke;
+    }
+
+    p.delete {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: 900;
+        font-size: 25px;
+        border: 1px solid #4a6b63;
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        margin: 10px auto;
+        text-align: center;
+        vertical-align: middle;
     }
 </style>

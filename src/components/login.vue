@@ -1,22 +1,20 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 mt-5 max auto">
-                <form v-on:submit.prevent="login">
-                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" v-model="email" id="email" class="form-control"
-                               placeholder="Enter your email address">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" v-model="password" id="password" class="form-control"
-                               placeholder="Enter your password">
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block">Sign In</button>
-                </form>
-            </div>
+        <div class="col-md-6 mt-5 mx-auto">
+            <form v-on:submit.prevent="login">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" v-model="email" id="email" class="form-control"
+                           placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" v-model="password" id="password" class="form-control"
+                           placeholder="Enter your password">
+                </div>
+                <button class="btn-lg btn-block">Sign In</button>
+            </form>
         </div>
     </div>
 </template>
@@ -42,7 +40,7 @@
                     localStorage.setItem('usertoken', res.data);
                     this.email = '';
                     this.password = '';
-                    router.push('/trips');
+                    router.push({name: 'trips'});
                 }).catch();
                 this.emitMethod();
             },
@@ -53,3 +51,9 @@
     }
 
 </script>
+
+<style scoped>
+    button {
+        background-color: #8dd6d0;
+    }
+</style>

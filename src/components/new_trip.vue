@@ -52,12 +52,16 @@
 </script>
 
 <style scoped>
+    .create-trip {
+        padding-top: 2em;
+    }
     .container {
         background-color: #8dd6d0;
         list-style: none;
         padding: 1.8em;
         border: 1px solid #4a6b63;
-        border-radius: 60px;
+        border-radius: 5px;
+        box-shadow: 0 0 1em #4a6b63;
         max-width: 900px;
         margin: 0 auto;
     }
@@ -97,7 +101,7 @@
         font-weight: bold;
         font-size: 14px;
         border: 1px solid #4a6b63;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 30%;
     }
 </style>

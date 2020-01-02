@@ -2,16 +2,16 @@
     <div class="container">
         <div class="col-md-6 mt-5 mx-auto">
             <form v-on:submit.prevent="register">
-                <h1 class="h3 mb-3 font-weight normal">Register</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 <div class="form-group">
-                    <label for="email">Email address</label>
+                    <label for="email">Email Address</label>
                     <input type="email" v-model="email" class="form-control" placeholder="Enter your email" id="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" v-model="password" class="form-control" placeholder="Enter your password" id="password">
                 </div>
-                <button class="btn-lg btn-primary btn-block" type="submit">Register</button>
+                <button class="btn-lg btn-block" type="submit">Register</button>
             </form>
         </div>
     </div>
@@ -40,3 +40,9 @@
         }
     }
 </script>
+
+<style scoped>
+    button {
+        background-color: #8dd6d0;
+    }
+</style>
