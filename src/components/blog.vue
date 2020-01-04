@@ -15,9 +15,11 @@
              v-bind:key="post._id"
              v-bind:index="index">
             <p class="date">{{`${post.date.getDate()}/${post.date.getMonth()+1}/${post.date.getFullYear()}`}}</p>
-            <p class="name">{{post.name}}</p>
+            <p class="name">{{post.title}}</p>
             <p class="text">{{post.text}}</p>
-            <p class="delete" v-on:dblclick="deletePost(post._id)">x</p>
+            <p>{{post.id}}</p>
+            <p class="read-more" @click="goToSinglePost(post._id)">Read more</p>
+            <button class="delete" @click="deletePost(post._id)">x</button>
         </div>
     </div>
 </template>
@@ -32,38 +34,7 @@
         data() {
             return {
                 title: 'Blog',
-                posts: [
-                    {
-                        date: new Date(),
-                        name: "dupa",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                            " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                            "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in " +
-                            "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur " +
-                            "sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                            "est laborum.",
-                    },
-                    {
-                        date: new Date(),
-                        name: "dupa",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                            " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                            "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in " +
-                            "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur " +
-                            "sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                            "est laborum.",
-                    },
-                    {
-                        date: new Date(),
-                        name: "dupa",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                            " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                            "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in " +
-                            "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur " +
-                            "sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                            "est laborum.",
-                    }
-                ],
+                posts: [],
                 postsCopy: [],
                 searchWord: '',
                 error: '',
@@ -71,7 +42,7 @@
         },
         async created() {
             try {
-                //this.posts = await PostService.getPosts();
+                this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
@@ -80,7 +51,7 @@
         },
         async updated() {
             try {
-                //this.posts = await PostService.getPosts();
+                this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
@@ -97,8 +68,8 @@
                 await PostService.deletePost(id);
                 //this.posts = await PostService.getPosts();
             },
-            goTo(location) {
-                router.push(location);
+            goToSinglePost(id) {
+                router.push({name: 'singlePost', params:{Pid:id}});
             }
         }
     }
@@ -109,6 +80,7 @@
     .new-post {
         margin: 30px 0;
     }
+
     .new-post-btn {
         background-color: #2c3e50;
         color: whitesmoke;
@@ -119,6 +91,13 @@
         width: 30%;
         padding: 5px;
         text-decoration: none;
+    }
+
+    .read-more {
+        color: #2c3e50;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 900;
     }
 
     .blog {
@@ -187,17 +166,13 @@
         font-weight: 700;
     }
 
-    p.delete {
-        background-color: #2c3e50;
+    .delete {
+        background-color: #e3063b;
         color: white;
         font-weight: 900;
-        font-size: 25px;
-        border: 1px solid #4a6b63;
+        border: 1px solid #e3063b;
         border-radius: 5px;
-        width: 40px;
-        height: 40px;
-        margin: 10px auto;
-        text-align: center;
-        vertical-align: middle;
+        margin-bottom: 20px;
+        margin-left: 90%;
     }
 </style>

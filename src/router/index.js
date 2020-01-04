@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import trips from '../components/trips';
-import single_trip from '../components/single_trip';
+import singleTrip from '../components/singleTrip';
+import singlePost from '../components/singlePost';
 import blog from '../components/blog';
-import new_trip from "../components/new_trip";
+import newTrip from "../components/newTrip";
 import login from "../components/login";
 import register from "../components/register";
-import new_post from "../components/new_post";
+import newPost from "../components/newPost";
 
 Vue.use(VueRouter);
 
@@ -25,9 +26,14 @@ const router = new VueRouter({
             component: trips
         },
         {
-            path: '/singleTrip',
-            name: 'single_trip',
-            component: single_trip
+            path: '/singleTrip/:Pid',
+            name: 'singleTrip',
+            component: singleTrip
+        },
+        {
+            path: '/singlePost',
+            name: 'singlePost',
+            component: singlePost
         },
         {
             path: '/blog',
@@ -37,12 +43,12 @@ const router = new VueRouter({
         {
             path: '/addTrip',
             name: 'addTrip',
-            component: new_trip
+            component: newTrip
         },
         {
             path: '/addPost',
             name: 'addPost',
-            component: new_post
+            component: newPost
         },
         {
             path: '/login',

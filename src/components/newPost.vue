@@ -32,9 +32,7 @@
         methods: {
             createPost() {
                 PostService.createPost(this.name, this.content, new Date());
-                // this.trips = await TripService.getTrips();
-                router.push({name: 'blog'});
-
+                router.push({name: 'blog'})
             }
         },
     }
@@ -44,6 +42,7 @@
     .create-post {
         padding-top: 2em;
     }
+
     .container {
         background-color: #8dd6d0;
         padding: 1.8em;
@@ -74,7 +73,7 @@
         font-size: 20px;
     }
 
-    .form-row > input, textarea{
+    .form-row > input, textarea {
         flex: 5;
         padding: .5em;
         border: 1px solid #4a6b63;

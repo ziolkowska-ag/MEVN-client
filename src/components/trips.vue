@@ -58,15 +58,15 @@
                 this.error = error.message;
             }
         },
-        // async updated() {
-        //     try {
-        //         this.trips = await TripService.getTrips();
-        //         this.tripsCopy = this.trips;
-        //
-        //     } catch (error) {
-        //         this.error = error.message;
-        //     }
-        // },
+        async updated() {
+            try {
+                this.trips = await TripService.getTrips();
+                this.tripsCopy = this.trips;
+
+            } catch (error) {
+                this.error = error.message;
+            }
+        },
         methods: {
             searchTrip() {
                 this.tripsCopy = this.trips.filter((trip) => {

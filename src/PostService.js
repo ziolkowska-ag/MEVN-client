@@ -22,11 +22,22 @@ class PostService {
         });
     }
 
+    static getPost(id) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.get(`${url}${id}`);
+                // eslint-disable-next-line no-console
+                resolve(res.data);
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
 
     // CREATE trip
-    static createPost(name, text, date) {
+    static createPost(title, text, date) {
         return axios.post(url, {
-            name,
+            title,
             text,
             date
         });

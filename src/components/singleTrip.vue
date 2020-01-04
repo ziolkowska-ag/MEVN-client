@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: 'single_trip',
+        name: 'singleTrip',
         data() {
             return {
                 msg: "Hello world!"
