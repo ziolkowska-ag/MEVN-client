@@ -57,7 +57,6 @@
     }
     .container {
         background-color: #8dd6d0;
-        list-style: none;
         padding: 1.8em;
         border: 1px solid #4a6b63;
         border-radius: 5px;
@@ -96,7 +95,7 @@
 
     .form-row > button {
         background-color: #4a6b63;
-        color: whitesmoke;
+        color: white;
         margin-top: 25px;
         font-weight: bold;
         font-size: 14px;

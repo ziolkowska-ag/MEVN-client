@@ -40,12 +40,12 @@
                     localStorage.setItem('usertoken', res.data);
                     this.email = '';
                     this.password = '';
-                    router.push({name: 'trips'});
                 }).catch();
                 this.emitMethod();
             },
             emitMethod() {
                 eventBus.$emit('logged-in', 'loggedin');
+                router.push({name: 'trips'});
             }
         }
     }

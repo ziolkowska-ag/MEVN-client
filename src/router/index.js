@@ -6,6 +6,7 @@ import blog from '../components/blog';
 import new_trip from "../components/new_trip";
 import login from "../components/login";
 import register from "../components/register";
+import new_post from "../components/new_post";
 
 Vue.use(VueRouter);
 
@@ -34,9 +35,14 @@ const router = new VueRouter({
             component: blog
         },
         {
-            path: '/add',
-            name: 'add',
+            path: '/addTrip',
+            name: 'addTrip',
             component: new_trip
+        },
+        {
+            path: '/addPost',
+            name: 'addPost',
+            component: new_post
         },
         {
             path: '/login',

@@ -24,7 +24,7 @@
                     <router-link class="nav-link" to="/blog">Blog</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/add">Add trip</router-link>
+                    <router-link class="nav-link" to="/addTrip">Add trip</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
                     <router-link class="nav-link" to="/trips">Trips</router-link>

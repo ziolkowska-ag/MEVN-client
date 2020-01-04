@@ -6,96 +6,50 @@
                 <input type="text" id="name" v-model="name" placeholder="Name your post..">
             </li>
             <li class="form-row">
-                <label for="country">Content:</label>
-                <input type="text" id="country" v-model="text" placeholder="Say something..">
-            </li>
-            <li class="form-row">
-                <label for="date">Date:</label>
-                <input type="date" id="date" v-model="date">
+                <label for="content">Content:</label>
+                <textarea id="content" v-model="content" placeholder="Say something.."/>
             </li>
             <li class="form-row">
                 <button v-on:click="createPost">Create!</button>
-                <button v-on:click="goTo('/')">Go home!</button>
             </li>
         </ul>
     </form>
 </template>
 
 <script>
-    import TripService from "../TripService";
     import router from "../router";
+    import PostService from "../PostService";
 
     export default {
         name: 'new_trip',
         data() {
             return {
-                trips: [
-                    {
-                        id: "1",
-                        name: "Lorem ipsum",
-                        country: "Germany",
-                        price: "129.99",
-                        date: new Date("2019-12-21T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "2",
-                        name: "Lorem pisum",
-                        country: "France",
-                        price: "1299.99",
-                        date: new Date("2019-12-10T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "3",
-                        name: "Lorem cremsum",
-                        country: "Germany",
-                        price: "1209.99",
-                        date: new Date("2019-12-09T18:30:41.075+00:00")
-                    },
-                    {
-                        id: "4",
-                        name: "Lorem pipisium",
-                        country: "Germany",
-                        price: "12009.99",
-                        date: new Date("2020-12-21T18:30:41.075+00:00")
-                    }
-                ],
-                tripsCopy: [],
                 error: '',
                 name: '',
-                country: '',
-                price: '',
-                date: ''
-            }
-        },
-        async created() {
-            try {
-                // this.trips = await TripService.getTrips();
-                this.tripsCopy = this.trips;
-
-            } catch (error) {
-                this.error = error.message;
+                content: '',
             }
         },
         methods: {
-            async createTrip() {
-                await TripService.createTrip(this.name, this.country, this.price);
+            createPost() {
+                PostService.createPost(this.name, this.content, new Date());
                 // this.trips = await TripService.getTrips();
-                await router.push('trips');
-            },
-            goTo(location) {
-                router.push(location);
+                router.push({name: 'blog'});
+
             }
         },
     }
 </script>
 
 <style scoped>
+    .create-post {
+        padding-top: 2em;
+    }
     .container {
         background-color: #8dd6d0;
-        list-style: none;
         padding: 1.8em;
         border: 1px solid #4a6b63;
-        border-radius: 60px;
+        border-radius: 5px;
+        box-shadow: 0 0 1em #4a6b63;
         max-width: 900px;
         margin: 0 auto;
     }
@@ -120,7 +74,7 @@
         font-size: 20px;
     }
 
-    .form-row > input, .form-row > datepicker {
+    .form-row > input, textarea{
         flex: 5;
         padding: .5em;
         border: 1px solid #4a6b63;
@@ -130,12 +84,16 @@
 
     .form-row > button {
         background-color: #4a6b63;
-        color: whitesmoke;
+        color: white;
         margin-top: 25px;
         font-weight: bold;
         font-size: 14px;
         border: 1px solid #4a6b63;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 30%;
+    }
+
+    textarea {
+        height: 20vh;
     }
 </style>
