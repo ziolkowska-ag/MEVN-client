@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbar1">
             <ul class="navbar-nav">
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/trips">Home</router-link>
+                    <router-link class="nav-link" to="/home">Home</router-link>
                 </li>
                 <li v-if="auth !== 'loggedin'" class="nav-item">
                     <router-link class="nav-link" to="/login">Login</router-link>

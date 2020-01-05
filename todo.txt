@@ -6,8 +6,6 @@ TODO:
 - add possibility to (add) and view trip
 - can styles be separate?
 - sort trips by date on main page
-- rename trips co main or home
-- create component for trips only
 - refactor model and route for trips
 
                 // eslint-disable-next-line no-console

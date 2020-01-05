@@ -8,6 +8,7 @@ import newTrip from "../components/newTrip";
 import login from "../components/login";
 import register from "../components/register";
 import newPost from "../components/newPost";
+import home from "../components/home";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: '/',
             name: 'unlogged',
             component: login
+        },
+        {
+            path: '/home',
+            name: 'home',
+            component: home
         },
         {
             path: '/trips',

@@ -17,7 +17,6 @@
             <p class="date">{{`${post.date.getDate()}/${post.date.getMonth()+1}/${post.date.getFullYear()}`}}</p>
             <p class="name">{{post.title}}</p>
             <p class="text">{{post.text}}</p>
-            <p>{{post.id}}</p>
             <p class="read-more" @click="goToSinglePost(post._id)">Read more</p>
             <button class="delete" @click="deletePost(post._id)">x</button>
         </div>
@@ -104,11 +103,6 @@
         padding-top: 5rem;
     }
 
-    .posts-container {
-        max-width: 700px;
-        margin: auto;
-    }
-
     h1 {
         color: #8dd6d0;
         font-weight: bold;
@@ -138,11 +132,12 @@
     }
 
     .posts-container {
+        max-width: 700px;
         border: 1px solid #4a6b63;
         border-radius: 5px;
         box-shadow: 0 0 1em #4a6b63;
         background-color: #8dd6d0;
-        margin-bottom: 15px;
+        margin: 15px auto;
         padding-top: 10px;
     }
 
