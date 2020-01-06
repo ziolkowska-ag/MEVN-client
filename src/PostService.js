@@ -4,18 +4,12 @@ const url = 'http://localhost:5000/api/posts/';
 
 class PostService {
 
-    // GET trips
     static getPosts() {
         return new Promise(async (resolve, reject) => {
             try {
                 const res = await axios.get(url);
                 const data = res.data;
-                resolve(
-                    data.map(post => ({
-                        ...post,
-                        date: new Date(post.date)
-                    }))
-                );
+                resolve(data);
             } catch (err) {
                 reject(err);
             }
@@ -34,7 +28,6 @@ class PostService {
         });
     }
 
-    // CREATE trip
     static createPost(title, text, date) {
         return axios.post(url, {
             title,
@@ -43,7 +36,6 @@ class PostService {
         });
     }
 
-    // DELETE trip
     static deletePost(id) {
         return axios.delete(`${url}${id}`);
     }

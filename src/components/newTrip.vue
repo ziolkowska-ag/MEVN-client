@@ -41,7 +41,7 @@
         },
         methods: {
             createTrip() {
-                TripService.createTrip(this.name, this.country, this.price);
+                TripService.createTrip(this.name, this.country, this.price, new Date(this.date));
                 this.goTo('/trips');
             },
             goTo(location) {

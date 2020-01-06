@@ -1,8 +1,10 @@
 <template>
     <div class="container">
-        <h1>{{post.title}}</h1>
-        <p class="date">{{`${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`}}</p>
-        <p class="text">{{post.text}}</p>
+        <div class="post-container">
+            <h1>{{post.title}}</h1>
+<!--            <p class="date">{{`${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`}}</p>-->
+            <p class="text">{{post.text}}</p>
+        </div>
     </div>
 </template>
 
@@ -28,9 +30,8 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    div.container {
+    div.post-container {
         max-width: 700px;
         border: 1px solid #4a6b63;
         border-radius: 5px;

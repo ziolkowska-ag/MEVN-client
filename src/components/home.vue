@@ -18,10 +18,8 @@
                        v-bind:index="index"
                 >
                     <div class="slide-content">
-                        <p>{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>
+                        <!--                        <p>{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>-->
                         <p class="name">{{trip.name}}</p>
-                        <p class="country">{{trip.country}}</p>
-                        <p class="price">${{trip.price}}</p>
                     </div>
                 </slide>
             </carousel>

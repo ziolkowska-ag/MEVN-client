@@ -37,7 +37,7 @@ const router = new VueRouter({
             component: singleTrip
         },
         {
-            path: '/singlePost',
+            path: '/singlePost/:Pid',
             name: 'singlePost',
             component: singlePost
         },

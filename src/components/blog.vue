@@ -14,7 +14,8 @@
              v-bind:item="post"
              v-bind:key="post._id"
              v-bind:index="index">
-            <p class="date">{{`${post.date.getDate()}/${post.date.getMonth()+1}/${post.date.getFullYear()}`}}</p>
+            <p class="date">{{`${new Date(post.date).getDate()}/${new Date(post.date).getMonth()+1}/${new
+                Date(post.date).getFullYear()}`}}</p>
             <p class="name">{{post.title}}</p>
             <p class="text">{{post.text}}</p>
             <p class="read-more" @click="goToSinglePost(post._id)">Read more</p>
@@ -68,7 +69,7 @@
                 //this.posts = await PostService.getPosts();
             },
             goToSinglePost(id) {
-                router.push({name: 'singlePost', params:{Pid:id}});
+                router.push({name: 'singlePost', params: {Pid: id}});
             }
         }
     }

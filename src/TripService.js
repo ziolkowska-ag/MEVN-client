@@ -4,35 +4,40 @@ const url = 'http://localhost:5000/api/trips/';
 
 class TripService {
 
-    // GET trips
     static getTrips() {
         return new Promise(async (resolve, reject) => {
             try {
                 const res = await axios.get(url);
                 const data = res.data;
-                resolve(
-                    data.map(trip => ({
-                        ...trip,
-                        date: new Date(trip.date)
-                    }))
-                );
+                resolve(data);
             } catch (err) {
                 reject(err);
             }
         });
     }
 
-
-    // CREATE trip
-    static createTrip(name, country, price) {
-        return axios.post(url, {
-            name,
-            country,
-            price
+    static getTrip(id) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.get(`${url}${id}`);
+                // eslint-disable-next-line no-console
+                console.log('hello from tripservice: ',res.data);
+                resolve(res.data);
+            } catch (err) {
+                reject(err);
+            }
         });
     }
 
-    // DELETE trip
+    static createTrip(name, country, price, date) {
+        return axios.post(url, {
+            name,
+            country,
+            price,
+            date,
+        });
+    }
+
     static deleteTrip(id) {
         return axios.delete(`${url}${id}`);
     }

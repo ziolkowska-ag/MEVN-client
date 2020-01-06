@@ -11,7 +11,8 @@
              v-bind:item="trip"
              v-bind:key="trip._id"
              v-bind:index="index">
-            <p class="date">{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>
+<!--            <p class="date">{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>-->
+<!--            <p class="date">{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>-->
             <p class="name">{{trip.name}}</p>
             <p class="country">{{trip.country}}</p>
             <p class="read-more" @click="goToSingleTrip(trip._id)">Learn more</p>
