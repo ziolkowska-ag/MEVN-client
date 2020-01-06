@@ -48,7 +48,7 @@
             },
             emitMethod() {
                 eventBus.$emit('logged-in', 'loggedin');
-                router.push({name: 'trips'});
+                router.push({name: 'home'});
             }
         }
     }

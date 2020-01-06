@@ -94,7 +94,7 @@
         methods: {
             searchPost() {
                 this.postsCopy = this.posts.filter((post) => {
-                    return post.name.toLowerCase().includes(this.searchWord.toLowerCase())
+                    return post.title.toLowerCase().includes(this.searchWord.toLowerCase())
                 });
             },
             async deletePost(id) {
