@@ -4,6 +4,10 @@
             <form v-on:submit.prevent="register">
                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" v-model="username" class="form-control" placeholder="Enter your username" id="username">
+                </div>
+                <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" v-model="email" class="form-control" placeholder="Enter your email" id="email">
                 </div>
@@ -24,6 +28,7 @@
     export default {
         data() {
             return {
+                username: '',
                 email: '',
                 password: ''
             }
@@ -31,6 +36,7 @@
         methods: {
             register() {
                 axios.post('http://localhost:5000/api/users/register', {
+                    username: this.username,
                     email: this.email,
                     password: this.password
                 }).then(() => {

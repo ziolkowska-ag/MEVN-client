@@ -34,7 +34,40 @@
         data() {
             return {
                 title: 'Blog',
-                posts: [],
+                posts: [
+                    {
+                        "date": "2020-01-04T17:34:11.676Z",
+                        "_id": "5e10cc9330777407b27f1cb2",
+                        "title": "Why poland sucks",
+                        "text": "fjdsknfdjsnjvd",
+                        "postPhoto": null,
+                        "__v": 0
+                    },
+                    {
+                        "date": "2020-01-04T18:24:07.466Z",
+                        "_id": "5e10d8471bbb8308eab4325d",
+                        "title": "Matrix",
+                        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n\n",
+                        "postPhoto": null,
+                        "__v": 0
+                    },
+                    {
+                        "date": "2020-01-06T13:09:05.057Z",
+                        "_id": "5e1331713477ed03f8d7ff90",
+                        "title": "Firebase/Firestor Advanced",
+                        "text": "fsgdfgc",
+                        "postPhoto": null,
+                        "__v": 0
+                    },
+                    {
+                        "date": "2020-01-06T13:49:00.184Z",
+                        "_id": "5e133acc2fc45e053bc44463",
+                        "title": "Firebase/Firestor Advanced",
+                        "text": "mk.,m",
+                        "postPhoto": null,
+                        "__v": 0
+                    }
+                ],
                 postsCopy: [],
                 searchWord: '',
                 error: '',
@@ -42,22 +75,22 @@
         },
         async created() {
             try {
-                this.posts = await PostService.getPosts();
+                //this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
                 this.error = error.message;
             }
         },
-        async updated() {
-            try {
-                this.posts = await PostService.getPosts();
-                this.postsCopy = this.posts;
-
-            } catch (error) {
-                this.error = error.message;
-            }
-        },
+        // async updated() {
+        //     try {
+        //         this.posts = await PostService.getPosts();
+        //         this.postsCopy = this.posts;
+        //
+        //     } catch (error) {
+        //         this.error = error.message;
+        //     }
+        // },
         methods: {
             searchPost() {
                 this.postsCopy = this.posts.filter((post) => {

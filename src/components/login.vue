@@ -4,9 +4,9 @@
             <form v-on:submit.prevent="login">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" v-model="email" id="email" class="form-control"
-                           placeholder="Enter your email address">
+                    <label for="username">Username</label>
+                    <input type="text" v-model="username" id="username" class="form-control"
+                           placeholder="Enter your username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -27,21 +27,24 @@
     export default {
         data() {
             return {
-                email: '',
+                username: '',
                 password: ''
             }
         },
         methods: {
             login() {
                 axios.post('http://localhost:5000/api/users/login', {
-                    email: this.email,
+                    username: this.username,
                     password: this.password
                 }).then(res => {
+                    // eslint-disable-next-line no-console
+                    console.log('hello from login: ', res.status);
                     localStorage.setItem('usertoken', res.data);
-                    this.email = '';
+                    this.emitMethod();
+
+                    this.username = '';
                     this.password = '';
                 }).catch();
-                this.emitMethod();
             },
             emitMethod() {
                 eventBus.$emit('logged-in', 'loggedin');
