@@ -5,13 +5,13 @@
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" v-model="username" id="username" class="form-control"
-                           placeholder="Enter your username">
+                    <input required type="text" v-model="username" id="username" class="form-control"
+                           placeholder="Enter your username" v-bind:class="{ error: isInvalid }">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" v-model="password" id="password" class="form-control"
-                           placeholder="Enter your password">
+                    <input required type="password" v-model="password" id="password" class="form-control"
+                           placeholder="Enter your password" v-bind:class="{ error: isInvalid }">
                 </div>
                 <button class="btn-lg btn-block">Sign In</button>
             </form>
@@ -23,12 +23,15 @@
     import axios from 'axios';
     import router from '../router';
     import eventBus from "./eventBus";
+    import Swal from 'sweetalert2';
 
     export default {
         data() {
             return {
                 username: '',
-                password: ''
+                password: '',
+                isInvalid: false,
+                errorMsg: '',
             }
         },
         methods: {
@@ -44,12 +47,22 @@
 
                     this.username = '';
                     this.password = '';
-                }).catch();
+                    this.isInvalid = false;
+
+                }).catch((err) => {
+                    this.isInvalid = true;
+                    Swal.fire({
+                        title: 'Ooops!',
+                        text: err.response.data.error,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    })
+                });
             },
             emitMethod() {
                 eventBus.$emit('logged-in', 'loggedin');
                 router.push({name: 'home'});
-            }
+            },
         }
     }
 
@@ -58,5 +71,9 @@
 <style scoped>
     button {
         background-color: #8dd6d0;
+    }
+
+    .error {
+        border: 1px solid red;
     }
 </style>
