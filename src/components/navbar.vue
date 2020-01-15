@@ -39,7 +39,7 @@
 
 <script>
     import eventBus from './eventBus'
-    import router from "../router";
+    import router, {store} from "../router";
 
     export default {
         data() {
@@ -51,6 +51,7 @@
         methods: {
             logout() {
                 localStorage.removeItem('usertoken');
+                store.commit("setAuthentication", true);
                 router.push({name: 'login'})
             }
         },

@@ -6,12 +6,12 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input required type="text" v-model="username" id="username" class="form-control"
-                           placeholder="Enter your username" v-bind:class="{ error: isInvalid }">
+                           placeholder="Enter your username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input required type="password" v-model="password" id="password" class="form-control"
-                           placeholder="Enter your password" v-bind:class="{ error: isInvalid }">
+                           placeholder="Enter your password">
                 </div>
                 <button class="btn-lg btn-block">Sign In</button>
             </form>
@@ -21,7 +21,7 @@
 
 <script>
     import axios from 'axios';
-    import router from '../router';
+    import router, {store} from '../router';
     import eventBus from "./eventBus";
     import Swal from 'sweetalert2';
 
@@ -41,7 +41,7 @@
                     password: this.password
                 }).then(res => {
                     // eslint-disable-next-line no-console
-                    console.log('hello from login: ', res.status);
+                    console.log('hello from login: ', res.data);
                     localStorage.setItem('usertoken', res.data);
                     this.emitMethod();
 
@@ -55,12 +55,14 @@
                         title: 'Ooops!',
                         text: err.response.data.error,
                         icon: 'error',
-                        confirmButtonText: 'OK'
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#8dd6d0',
                     })
                 });
             },
             emitMethod() {
                 eventBus.$emit('logged-in', 'loggedin');
+                store.commit("setAuthentication", true);
                 router.push({name: 'home'});
             },
         }
@@ -71,9 +73,5 @@
 <style scoped>
     button {
         background-color: #8dd6d0;
-    }
-
-    .error {
-        border: 1px solid red;
     }
 </style>

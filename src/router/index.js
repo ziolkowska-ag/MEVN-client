@@ -9,52 +9,86 @@ import login from "../components/login";
 import register from "../components/register";
 import newPost from "../components/newPost";
 import home from "../components/home";
+import Vuex from "vuex";
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
+export const store = new Vuex.Store(
+    {
+        state: {
+            authenticated: false,
+            accessToken:  localStorage.getItem('usertoken'),
 
+        },
+        mutations: {
+            setAuthentication(state, status) {
+                state.authenticated = status;
+            }
+        }
+    }
+);
+
+export const requireAuth = (to, from, next) => {
+    // eslint-disable-next-line no-console
+
+    if (store.state.authenticated || store.state.accessToken !== null) {
+        next();
+    } else {
+        next('/login');
+    }
+};
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
         {
             path: '/',
-            name: 'unlogged',
-            component: login
+            redirect: {
+                name: 'login'
+            }
         },
         {
             path: '/home',
             name: 'home',
-            component: home
+            component: home,
+            beforeEnter: requireAuth,
+
         },
         {
             path: '/trips',
             name: 'trips',
-            component: trips
+            component: trips,
+            beforeEnter: requireAuth,
         },
         {
             path: '/singleTrip/:Pid',
             name: 'singleTrip',
-            component: singleTrip
+            component: singleTrip,
+            beforeEnter: requireAuth
         },
         {
             path: '/singlePost/:Pid',
             name: 'singlePost',
-            component: singlePost
+            component: singlePost,
+            beforeEnter: requireAuth,
         },
         {
             path: '/blog',
             name: 'blog',
-            component: blog
+            component: blog,
+            beforeEnter: requireAuth,
         },
         {
             path: '/addTrip',
             name: 'addTrip',
-            component: newTrip
+            component: newTrip,
+            beforeEnter: requireAuth,
         },
         {
             path: '/addPost',
             name: 'addPost',
-            component: newPost
+            component: newPost,
+            beforeEnter: requireAuth,
         },
         {
             path: '/login',
