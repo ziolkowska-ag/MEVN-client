@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    // import TripService from "../TripService";
+    import TripService from "../TripService";
     import {Carousel, Slide} from 'vue-carousel';
     import router from "../router";
 
@@ -41,58 +41,14 @@
             return {
                 title: 'Travel journal',
                 subtitle: 'Trips coming up this month:',
-                trips: [
-                    {
-                        "_id": "5e0e679a3d73f70641d3c068",
-                        "name": "Berlin Wall and other fun post war memorabilia",
-                        "country": "Germany",
-                        "price": "999.99",
-                        "date": "2020-01-02T21:58:50.537Z"
-                    },
-                    {
-                        "_id": "5e123df09d9ed92b60dda52e",
-                        "name": "Florence fun",
-                        "country": "Italy",
-                        "price": "233.55",
-                        "date": "2020-01-05T19:50:08.962Z"
-                    },
-                    {
-                        "_id": "5e13309510257d03f394ba44",
-                        "name": "Matrix",
-                        "country": "UK",
-                        "price": "199.99",
-                        "date": "2020-01-06T13:05:25.957Z"
-                    },
-                    {
-                        "_id": "5e1330b13477ed03f8d7ff8f",
-                        "name": "Matrix",
-                        "country": "UK",
-                        "price": "199.99",
-                        "date": "2020-07-01T13:05:53.544Z"
-                    },
-                    {
-                        "_id": "5e133920ac25bb04ca6c0877",
-                        "name": "Firebase/Firestor Advanced",
-                        "country": "UK",
-                        "price": "$",
-                        "date": "2020-03-03T13:41:52.739Z"
-                    },
-                    {
-                        "_id": "5e13392eac25bb04ca6c0878",
-                        "name": "Elenor",
-                        "country": "UK",
-                        "price": "199.99",
-                        "date": "2020-06-06T13:42:06.207Z"
-                    }
-                ],
+                trips: [],
                 tripsCopy: [],
                 error: '',
             }
         },
         async created() {
             try {
-                // this.trips = await TripService.getTrips();
-                // eslint-disable-next-line no-console
+                this.trips = await TripService.getTrips();
                 this.tripsCopy = this.trips.filter(trip => new Date(trip.date).getMonth() === new Date().getMonth())
                     .sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
@@ -101,15 +57,15 @@
                 this.error = error.message;
             }
         },
-        // async updated() {
-        //     try {
-        //         this.trips = await TripService.getTrips();
-        //         this.tripsCopy = this.trips;
-        //
-        //     } catch (error) {
-        //         this.error = error.message;
-        //     }
-        // },
+        async updated() {
+            try {
+                this.trips = await TripService.getTrips();
+                this.tripsCopy = this.trips;
+
+            } catch (error) {
+                this.error = error.message;
+            }
+        },
         methods: {
             goTo(location) {
                 router.push(location);
