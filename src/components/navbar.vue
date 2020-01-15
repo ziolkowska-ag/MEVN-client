@@ -55,15 +55,18 @@
                 router.push({name: 'login'})
             }
         },
-        mounted() {
+        created() {
             eventBus.$on('logged-in', status => {
                 this.auth = status;
-            })
+            });
+            if(store.state.accessToken !== null) {
+                eventBus.$emit('logged-in', 'loggedin');
+            }
         }
     }
 </script>
 
-<style scope>
+<style>
     .navbar {
         background-color: #8dd6d0;
     }
