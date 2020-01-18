@@ -44,24 +44,21 @@
                 trips: [],
                 tripsCopy: [],
                 error: '',
+                username: '',
+                user_id: '',
             }
         },
         async created() {
             try {
-                this.trips = await TripService.getTrips();
+                this.username = localStorage.getItem("username");
+                await TripService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.trips = await TripService.getTrips(this.user_id);
                 this.tripsCopy = this.trips.filter(trip => new Date(trip.date).getMonth() === new Date().getMonth())
                     .sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
                 });
-            } catch (error) {
-                this.error = error.message;
-            }
-        },
-        async updated() {
-            try {
-                this.trips = await TripService.getTrips();
-                this.tripsCopy = this.trips;
-
             } catch (error) {
                 this.error = error.message;
             }

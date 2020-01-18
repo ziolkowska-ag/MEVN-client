@@ -36,18 +36,24 @@
                 name: '',
                 country: '',
                 price: '',
-                date: ''
+                date: '',
+                username: '',
+                user_id: '',
             }
         },
         methods: {
             createTrip() {
-                TripService.createTrip(this.name, this.country, this.price, new Date(this.date));
-                this.goTo('/trips');
+                TripService.createTrip(this.user_id, this.name, this.country, this.price, new Date(this.date));
+                router.push({name: 'trips'})
+
             },
-            goTo(location) {
-                router.push(location);
-            }
         },
+        created() {
+            this.username = localStorage.getItem("username");
+            TripService.getUserId(this.username).then(res => {
+                this.user_id = res.id;
+            });
+        }
     }
 </script>
 

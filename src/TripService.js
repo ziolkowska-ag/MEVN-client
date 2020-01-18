@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 const url = 'http://localhost:5000/api/trips/';
+const user_url = 'http://localhost:5000/api/users/';
 
 class TripService {
 
-    static getTrips() {
+    static getTrips(userId) {
         return new Promise(async (resolve, reject) => {
             try {
-                const res = await axios.get(url);
+                const res = await axios.get(`${url}${userId}`);
                 const data = res.data;
                 resolve(data);
             } catch (err) {
@@ -29,8 +30,20 @@ class TripService {
         });
     }
 
-    static createTrip(name, country, price, date) {
+    static getUserId(username) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const res = await axios.get(`${user_url}${username}`);
+                resolve(res.data);
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
+
+    static createTrip(created_by, name, country, price, date) {
         return axios.post(url, {
+            created_by,
             name,
             country,
             price,
