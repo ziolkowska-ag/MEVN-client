@@ -71,20 +71,17 @@
                 postsCopy: [],
                 searchWord: '',
                 error: '',
+                username: '',
+                user_id: '',
             }
         },
         async created() {
             try {
-                this.posts = await PostService.getPosts();
-                this.postsCopy = this.posts;
-
-            } catch (error) {
-                this.error = error.message;
-            }
-        },
-        async updated() {
-            try {
-                this.posts = await PostService.getPosts();
+                this.username = localStorage.getItem("username");
+                await PostService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.posts = await PostService.getPosts(this.user_id);
                 this.postsCopy = this.posts;
 
             } catch (error) {
