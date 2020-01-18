@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <img class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200">
         <div class="col-md-6 mt-5 mx-auto">
             <form v-on:submit.prevent="login">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -73,5 +74,9 @@
 <style scoped>
     button {
         background-color: #8dd6d0;
+    }
+
+    .icon {
+        margin-top: 20px;
     }
 </style>

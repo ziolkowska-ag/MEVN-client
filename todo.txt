@@ -1,9 +1,16 @@
 TODO:
-- add binding between user and trips + blog posts
-- maybe add possibility to view other users trips and blog posts ?
+- add binding between user and trips + blog posts // probable work flow:
+    - change model
+    - remove data
+    - render trips based on condition: currentUser === trip.createdBy
+    - render posts based on condition: currentUser === post.createdBy
 - can styles be separate?
 - change date of trip to allow from-to
 - form validation
 - too many requests on home
 - add PageNotFound
+- edit page and trip?
+- searching trips doesnt work
+- research quasar on current project, probably too hard to moved this to cli
+- maybe add a home page i.e. BEFORE login/register
                 // eslint-disable-next-line no-console
