@@ -27,14 +27,24 @@
                 error: '',
                 name: '',
                 content: '',
+                user_id: '',
+                username: '',
             }
         },
         methods: {
             createPost() {
-                PostService.createPost(this.name, this.content, new Date());
+                PostService.createPost(this.name, this.content, new Date(), this.user_id);
                 router.push({name: 'blog'})
             }
         },
+        created() {
+            this.username = localStorage.getItem("username");
+            PostService.getUserId(this.username).then(res => {
+                this.user_id = res.id;
+                // eslint-disable-next-line no-console
+                console.log(this.user_id);
+            });
+        }
     }
 </script>
 

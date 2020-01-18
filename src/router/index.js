@@ -29,8 +29,6 @@ export const store = new Vuex.Store(
 );
 
 export const requireAuth = (to, from, next) => {
-    // eslint-disable-next-line no-console
-
     if (store.state.authenticated || store.state.accessToken !== null) {
         next();
     } else {

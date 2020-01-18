@@ -75,22 +75,22 @@
         },
         async created() {
             try {
-                //this.posts = await PostService.getPosts();
+                this.posts = await PostService.getPosts();
                 this.postsCopy = this.posts;
 
             } catch (error) {
                 this.error = error.message;
             }
         },
-        // async updated() {
-        //     try {
-        //         this.posts = await PostService.getPosts();
-        //         this.postsCopy = this.posts;
-        //
-        //     } catch (error) {
-        //         this.error = error.message;
-        //     }
-        // },
+        async updated() {
+            try {
+                this.posts = await PostService.getPosts();
+                this.postsCopy = this.posts;
+
+            } catch (error) {
+                this.error = error.message;
+            }
+        },
         methods: {
             searchPost() {
                 this.postsCopy = this.posts.filter((post) => {

@@ -42,8 +42,9 @@
                     password: this.password
                 }).then(res => {
                     // eslint-disable-next-line no-console
-                    console.log('hello from login: ', res.data);
+                    console.log('hello from login: ', this.username);
                     localStorage.setItem('usertoken', res.data);
+                    localStorage.setItem('username', this.username);
                     this.emitMethod();
 
                     this.username = '';
