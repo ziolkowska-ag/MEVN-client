@@ -11,6 +11,7 @@ import newPost from "../components/newPost";
 import home from "../components/home";
 import intro from "../components/intro";
 import Vuex from "vuex";
+import pageNotFound from "../components/pageNotFound";
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -41,6 +42,10 @@ export const requireAuth = (to, from, next) => {
 const router = new VueRouter({
     mode: 'history',
     routes: [
+        {
+            path: '*',
+            component: pageNotFound,
+        },
         {
             path: '/',
             name: 'intro',
