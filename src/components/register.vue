@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <img class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200">
+        <img id="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200"
+             @click="goTo('intro')">
         <div class="col-md-6 mt-5 mx-auto">
             <!-- the submit event will no longer reload the page -->
             <!--            equivalent of putting e.preventDefault() in the handleSubmit method-->
@@ -84,7 +85,7 @@
             handleSubmit() {
                 this.submitted = true;
                 this.$v.$touch();
-                if(this.$v.$invalid) {
+                if (this.$v.$invalid) {
                     return;
                 }
                 axios.post('http://localhost:5000/api/users/register', {
@@ -95,6 +96,9 @@
                     router.push({name: 'login'});
                 }).catch();
             },
+            goTo(whereTo) {
+                router.push({name: whereTo});
+            }
         }
     }
 </script>
@@ -102,10 +106,12 @@
 <style scoped>
     button {
         background-color: #8dd6d0;
+        margin-bottom: 10px;
     }
 
-    .icon {
+    #icon {
         margin-top: 20px;
+        cursor: pointer;
     }
 
     div > label {

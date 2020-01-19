@@ -52,7 +52,7 @@
             logout() {
                 localStorage.removeItem('usertoken');
                 store.commit("setAuthentication", true);
-                router.push({name: 'login'})
+                router.push({name: 'intro'})
             }
         },
         created() {

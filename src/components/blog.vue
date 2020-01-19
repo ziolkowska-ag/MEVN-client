@@ -1,6 +1,6 @@
 <template>
     <div class="blog">
-        <h1>{{title}}</h1>
+        <h1 id="title">{{title}}</h1>
         <div class="new-post">
             <router-link class="new-post-btn" to="/addPost">Add New Post</router-link>
         </div>
@@ -106,7 +106,7 @@
         padding-top: 5rem;
     }
 
-    h1 {
+    #title {
         color: #8dd6d0;
         font-weight: bold;
         font-size: 55px;
@@ -142,10 +142,6 @@
         background-color: #8dd6d0;
         margin: 15px auto;
         padding-top: 10px;
-    }
-
-    h3 {
-        color: #4a6b63;
     }
 
     p.name {

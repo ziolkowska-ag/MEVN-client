@@ -9,6 +9,7 @@ import login from "../components/login";
 import register from "../components/register";
 import newPost from "../components/newPost";
 import home from "../components/home";
+import intro from "../components/intro";
 import Vuex from "vuex";
 
 Vue.use(VueRouter);
@@ -42,9 +43,8 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: {
-                name: 'login'
-            }
+            name: 'intro',
+            component: intro
         },
         {
             path: '/home',

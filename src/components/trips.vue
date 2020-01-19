@@ -123,21 +123,12 @@
         padding-top: 10px;
     }
 
-    h3 {
-        color: #4a6b63;
-    }
-
     p.name {
         font-size: 30px;
         font-weight: 700;
         margin-bottom: 0;
         cursor: pointer;
         color: whitesmoke;
-    }
-
-
-    p.date {
-        font-weight: 700;
     }
 
     .delete {

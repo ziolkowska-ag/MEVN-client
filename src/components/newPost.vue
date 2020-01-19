@@ -21,7 +21,7 @@
     import PostService from "../PostService";
 
     export default {
-        name: 'new_trip',
+        name: 'new_post',
         data() {
             return {
                 error: '',

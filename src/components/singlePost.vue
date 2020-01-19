@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <div class="post-container">
-            <h1>{{post.title}}</h1>
-<!--            <p class="date">{{`${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`}}</p>-->
+            <h1 id="postTitle">{{post.title}}</h1>
             <p class="text">{{post.text}}</p>
         </div>
     </div>
@@ -50,15 +49,13 @@
         margin: 15px auto;
         padding-top: 10px;
     }
-    h1 {
+
+    #postTitle {
         color: #2c3e50;
         font-weight: bold;
         font-size: 55px;
     }
-    .date {
-        font-size: 20px;
-        color: white;
-    }
+
     .text {
         font-size: 25px;
     }

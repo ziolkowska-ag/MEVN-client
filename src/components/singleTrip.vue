@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="trip-container">
-            <h1>{{trip.name}}</h1>
+            <h1 id="tripName">{{trip.name}}</h1>
             <p class="date">{{`Date: ${day}/${month+1}/${year}`}}</p>
             <p class="country">Country: {{trip.country}}</p>
             <p class="price">Price: {{trip.price}}</p>
@@ -55,7 +55,7 @@
         padding-top: 10px;
     }
 
-    h1 {
+    #tripName {
         color: #2c3e50;
         font-weight: bold;
         font-size: 55px;
@@ -64,10 +64,6 @@
     .date {
         font-size: 20px;
         color: white;
-    }
-
-    .text {
-        font-size: 25px;
     }
 
 </style>

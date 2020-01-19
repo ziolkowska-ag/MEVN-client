@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <img class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200">
+        <img id="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200"
+             @click="goTo('intro')">
         <div class="col-md-6 mt-5 mx-auto">
             <form @submit.prevent="login">
                 <h1 class="login h2 mb-3 font-weight-normal">Please sign in</h1>
@@ -41,8 +42,6 @@
                     username: this.username,
                     password: this.password
                 }).then(res => {
-                    // eslint-disable-next-line no-console
-                    console.log('hello from login: ', this.username);
                     localStorage.setItem('usertoken', res.data);
                     localStorage.setItem('username', this.username);
                     this.emitMethod();
@@ -67,6 +66,9 @@
                 store.commit("setAuthentication", true);
                 router.push({name: 'home'});
             },
+            goTo(whereTo) {
+                router.push({name: whereTo});
+            }
         }
     }
 
@@ -77,8 +79,9 @@
         background-color: #8dd6d0;
     }
 
-    .icon {
+    #icon {
         margin-top: 20px;
+        cursor: pointer;
     }
 
     div > label {
