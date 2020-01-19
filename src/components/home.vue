@@ -1,9 +1,10 @@
 <template>
     <div class="container">
+        <img id="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200">
         <h1 id="title">{{title}}</h1>
         <hr>
         <p class="error" v-if="error">{{error}}</p>
-        <h4>{{subtitle}}</h4>
+        <h4 id="subtitle">{{subtitle}}</h4>
         <div class="noTrips" v-if="tripsCopy.length <= 0">
             <p>You currently don't have any trips in your journal.</p>
             <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
@@ -12,7 +13,6 @@
             <carousel :perPage="1"
                       :autoplay="true"
                       :loop="true"
-                      :speed="1000"
                       pagination-active-color="#2c3e50">
                 <slide v-for="(trip, index) in tripsCopy"
                        v-bind:item="trip"
@@ -20,9 +20,9 @@
                        v-bind:index="index"
                 >
                     <div class="slide-content">
-                        <p class="date">{{`${new Date(trip.date).getDate()}/${new Date(trip.date).getMonth()+1}/${new
-                            Date(trip.date).getFullYear()}`}}</p>
-                        <p class="name">{{trip.name}}</p>
+                        <p class="date">{{`Leaving on: ${new Date(trip.start_date).getDate()}/${new Date(trip.start_date).getMonth()+1}/${new
+                            Date(trip.start_date).getFullYear()}`}}</p>
+                        <p class="name" @click="goTo(`singleTrip/${trip._id}`)">{{trip.name}}</p>
                     </div>
                 </slide>
             </carousel>
@@ -59,7 +59,7 @@
                     this.user_id = res.id;
                 });
                 this.trips = await TripService.getTrips(this.user_id);
-                this.tripsCopy = this.trips.filter(trip => new Date(trip.date).getMonth() === new Date().getMonth())
+                this.tripsCopy = this.trips.filter(trip => new Date(trip.start_date).getMonth() === new Date().getMonth())
                     .sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
                 });
@@ -78,7 +78,7 @@
 <style scoped>
 
     .container {
-        padding-top: 5rem;
+        padding-top: 2rem;
     }
 
     .trips-container {
@@ -116,11 +116,12 @@
         height: 20vh;
     }
 
-    h4 {
+    #subtitle {
         color: #2c3e50;
     }
 
     p.name {
+        padding-top: 15px;
         font-size: 30px;
         font-weight: 700;
         margin-bottom: 0;
@@ -134,6 +135,7 @@
     }
 
     p.date {
+        padding-top: 15px;
         font-weight: 600;
         position: absolute;
         top: 20%;

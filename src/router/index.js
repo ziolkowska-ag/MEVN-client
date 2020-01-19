@@ -104,8 +104,10 @@ const router = new VueRouter({
             name: 'register',
             component: register
         }
-
-    ]
+    ],
+    scrollBehavior() {
+        document.getElementById('app').scrollIntoView();
+    }
 });
 
 export default router;

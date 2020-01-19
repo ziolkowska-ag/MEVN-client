@@ -2,9 +2,10 @@
     <div class="container">
         <div class="trip-container">
             <h1 id="tripName">{{trip.name}}</h1>
-            <p class="date">{{`Date: ${day}/${month+1}/${year}`}}</p>
-            <p class="country">Country: {{trip.country}}</p>
-            <p class="price">Price: {{trip.price}}</p>
+            <p class="date">{{`FROM: ${start_day}/${start_month+1}/${start_year}`}}</p>
+            <p class="date">{{`TO: ${end_day}/${end_month+1}/${end_year}`}}</p>
+            <p class="country"><span id="countryLabel">Country:</span> {{trip.country}}</p>
+            <p class="price"><span id="priceLabel">Price:</span> {{`${trip.price} $`}}</p>
         </div>
     </div>
 </template>
@@ -17,7 +18,12 @@
         data() {
             return {
                 trip: {},
-                day: '',
+                start_day: '',
+                start_month: '',
+                start_year: '',
+                end_day: '',
+                end_month: '',
+                end_year: '',
                 month: '',
                 year: '',
                 username: '',
@@ -31,9 +37,22 @@
                     this.user_id = res.id;
                 });
                 this.trip = await TripService.getTrip(this.user_id, this.$route.params.Pid);
-                this.day = new Date(this.trip.date).getDate();
-                this.month = new Date(this.trip.date).getMonth();
-                this.year = new Date(this.trip.date).getFullYear();
+
+                let startDate = this.trip.start_date;
+                let endDate = this.trip.end_date;
+                // eslint-disable-next-line no-console
+                console.log(startDate, 'start');
+                // eslint-disable-next-line no-console
+                console.log(endDate, 'end');
+
+                this.start_day = new Date(startDate).getDate();
+                this.end_day = new Date(endDate).getDate();
+
+                this.start_month = new Date(startDate).getMonth();
+                this.end_month = new Date(endDate).getMonth();
+
+                this.start_year = new Date(startDate).getFullYear();
+                this.end_year = new Date(endDate).getFullYear();
 
             } catch (error) {
                 this.error = error.message;
@@ -58,12 +77,16 @@
     #tripName {
         color: #2c3e50;
         font-weight: bold;
-        font-size: 55px;
+        font-size: 35px;
     }
 
     .date {
-        font-size: 20px;
+        font-size: 18px;
         color: white;
     }
 
+    #countryLabel, #priceLabel {
+        font-weight: bolder;
+        color: #2c3e50;
+    }
 </style>

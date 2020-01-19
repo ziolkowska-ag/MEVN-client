@@ -47,16 +47,16 @@
         box-shadow: 0 0 1em #4a6b63;
         background-color: #8dd6d0;
         margin: 15px auto;
-        padding-top: 10px;
+        padding: 20px;
     }
 
     #postTitle {
         color: #2c3e50;
         font-weight: bold;
-        font-size: 55px;
+        font-size: 35px;
     }
 
     .text {
-        font-size: 25px;
+        font-size: 18px;
     }
 </style>

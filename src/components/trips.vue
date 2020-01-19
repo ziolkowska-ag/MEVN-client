@@ -1,6 +1,6 @@
 <template>
     <div class="trips">
-        <h1>{{title}}</h1>
+        <h1 id="title">{{title}}</h1>
         <div class="search-trip">
             <label for="search-trip">SEARCH..</label>
             <input type="search" @keyup="searchTrip" v-model="searchWord" id="search-trip">
@@ -92,7 +92,7 @@
         padding-top: 5rem;
     }
 
-    h1 {
+    #title {
         color: #8dd6d0;
         font-weight: bold;
         font-size: 55px;
@@ -127,7 +127,7 @@
         box-shadow: 0 0 1em #4a6b63;
         background-color: #8dd6d0;
         margin: 15px auto;
-        padding-top: 10px;
+        padding-top: 40px;
     }
 
     p.name {

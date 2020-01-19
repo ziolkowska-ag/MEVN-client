@@ -39,13 +39,14 @@ class TripService {
         });
     }
 
-    static createTrip(created_by, name, country, price, date) {
+    static createTrip(created_by, name, country, price, start_date, end_date) {
         return axios.post(url, {
             created_by,
             name,
             country,
             price,
-            date,
+            start_date,
+            end_date,
         });
     }
 

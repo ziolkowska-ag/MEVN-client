@@ -15,8 +15,12 @@
                 <input type="text" id="price" v-model="price" placeholder="How much are you paying..">
             </li>
             <li class="form-row">
-                <label for="date">Date:</label>
-                <input type="date" id="date" v-model="date">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" v-model="start_date">
+            </li>
+            <li class="form-row">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" v-model="end_date">
             </li>
             <li class="form-row">
                 <button v-on:click="createTrip">Create!</button>
@@ -38,14 +42,15 @@
                 name: '',
                 country: '',
                 price: '',
-                date: '',
+                start_date: '',
+                end_date: '',
                 username: '',
                 user_id: '',
             }
         },
         methods: {
             createTrip() {
-                TripService.createTrip(this.user_id, this.name, this.country, this.price, new Date(this.date));
+                TripService.createTrip(this.user_id, this.name, this.country, this.price, new Date(this.start_date), new Date(this.end_date));
                 router.push({name: 'trips'})
             },
         },
