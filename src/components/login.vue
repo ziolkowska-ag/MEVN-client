@@ -2,8 +2,8 @@
     <div class="container">
         <img class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="200" width="200">
         <div class="col-md-6 mt-5 mx-auto">
-            <form v-on:submit.prevent="login">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <form @submit.prevent="login">
+                <h1 class="login h2 mb-3 font-weight-normal">Please sign in</h1>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input required type="text" v-model="username" id="username" class="form-control"
@@ -79,5 +79,17 @@
 
     .icon {
         margin-top: 20px;
+    }
+
+    div > label {
+        font-weight: 700;
+    }
+
+    .form-group {
+        padding-top: 10px;
+    }
+
+    .login {
+        text-decoration: underline;
     }
 </style>
