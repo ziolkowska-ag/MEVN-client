@@ -45,7 +45,6 @@
             createTrip() {
                 TripService.createTrip(this.user_id, this.name, this.country, this.price, new Date(this.date));
                 router.push({name: 'trips'})
-
             },
         },
         created() {

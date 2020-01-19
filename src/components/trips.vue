@@ -11,8 +11,6 @@
              v-bind:item="trip"
              v-bind:key="trip._id"
              v-bind:index="index">
-            <!--            <p class="date">{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>-->
-            <!--            <p class="date">{{`${trip.date.getDate()}/${trip.date.getMonth()+1}/${trip.date.getFullYear()}`}}</p>-->
             <p class="name">{{trip.name}}</p>
             <p class="country">{{trip.country}}</p>
             <p class="read-more" @click="goToSingleTrip(trip._id)">Learn more</p>
@@ -60,6 +58,12 @@
             },
             async deleteTrip(id) {
                 await TripService.deleteTrip(id);
+                this.username = localStorage.getItem("username");
+                await TripService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.trips = await TripService.getTrips(this.user_id);
+                this.tripsCopy = this.trips;
             },
             goToSingleTrip(id) {
                 router.push({name: 'singleTrip', params: {Pid: id}});

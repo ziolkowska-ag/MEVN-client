@@ -16,13 +16,23 @@
         data() {
             return {
                 post: {},
-                postDate: '',
+                day: '',
+                month: '',
+                year: '',
+                username: '',
+                user_id: '',
             }
         },
         async created() {
             try {
-                this.post = await PostService.getPost(this.$route.params.Pid);
-                this.postDate = new Date(this.post.date);
+                this.username = localStorage.getItem("username");
+                await PostService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.post = await PostService.getPost(this.user_id, this.$route.params.Pid);
+                this.day = new Date(this.trip.date).getDate();
+                this.month = new Date(this.trip.date).getMonth();
+                this.year = new Date(this.trip.date).getFullYear();
             } catch (error) {
                 this.error = error.message;
             }

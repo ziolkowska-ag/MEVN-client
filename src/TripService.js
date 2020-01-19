@@ -17,12 +17,10 @@ class TripService {
         });
     }
 
-    static getTrip(id) {
+    static getTrip(userId, id) {
         return new Promise(async(resolve, reject) => {
             try {
-                const res = await axios.get(`${url}${id}`);
-                // eslint-disable-next-line no-console
-                console.log('hello from tripservice: ',res.data);
+                const res = await axios.get(`${url}/${userId}/${id}`);
                 resolve(res.data);
             } catch (err) {
                 reject(err);

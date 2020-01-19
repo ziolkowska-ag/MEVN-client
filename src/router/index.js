@@ -29,6 +29,7 @@ export const store = new Vuex.Store(
 );
 
 export const requireAuth = (to, from, next) => {
+
     if (store.state.authenticated || store.state.accessToken !== null) {
         next();
     } else {

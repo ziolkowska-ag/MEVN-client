@@ -2,7 +2,7 @@
     <div class="container">
         <div class="trip-container">
             <h1>{{trip.name}}</h1>
-            <p class="date">{{`Date: ${tripDate.getDate()}/${tripDate.getMonth()+1}/${tripDate.getFullYear()}`}}</p>
+            <p class="date">{{`Date: ${day}/${month+1}/${year}`}}</p>
             <p class="country">Country: {{trip.country}}</p>
             <p class="price">Price: {{trip.price}}</p>
         </div>
@@ -17,13 +17,24 @@
         data() {
             return {
                 trip: {},
-                tripDate: '',
+                day: '',
+                month: '',
+                year: '',
+                username: '',
+                user_id: '',
             }
         },
         async created() {
             try {
-                this.trip = await TripService.getTrip(this.$route.params.Pid);
-                this.tripDate = new Date(this.trip.date);
+                this.username = localStorage.getItem("username");
+                await TripService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.trip = await TripService.getTrip(this.user_id, this.$route.params.Pid);
+                this.day = new Date(this.trip.date).getDate();
+                this.month = new Date(this.trip.date).getMonth();
+                this.year = new Date(this.trip.date).getFullYear();
+
             } catch (error) {
                 this.error = error.message;
             }

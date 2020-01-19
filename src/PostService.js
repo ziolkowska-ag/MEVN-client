@@ -16,16 +16,17 @@ class PostService {
         });
     }
 
-    static getPost(id) {
+    static getPost(userId, id) {
         return new Promise(async(resolve, reject) => {
             try {
-                const res = await axios.get(`${url}${id}`);
+                const res = await axios.get(`${url}/${userId}/${id}`);
                 resolve(res.data);
             } catch (err) {
                 reject(err);
             }
         });
     }
+
     static getUserId(username) {
         return new Promise(async (resolve, reject) => {
             try {

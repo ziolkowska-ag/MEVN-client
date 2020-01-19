@@ -63,7 +63,12 @@
             },
             async deletePost(id) {
                 await PostService.deletePost(id);
-                //this.posts = await PostService.getPosts();
+                this.username = localStorage.getItem("username");
+                await PostService.getUserId(this.username).then(res => {
+                    this.user_id = res.id;
+                });
+                this.posts = await PostService.getPosts(this.user_id);
+                this.postsCopy = this.posts;
             },
             goToSinglePost(id) {
                 router.push({name: 'singlePost', params: {Pid: id}});
@@ -152,7 +157,7 @@
     }
 
     p.text {
-        padding: 0 5px;
+        padding: 15px;
     }
 
     p.date {

@@ -41,8 +41,6 @@
             this.username = localStorage.getItem("username");
             PostService.getUserId(this.username).then(res => {
                 this.user_id = res.id;
-                // eslint-disable-next-line no-console
-                console.log(this.user_id);
             });
         }
     }
