@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div class="trip-container">
-            <h1 id="tripName">{{trip.name}}</h1>
+            <h1 id="tripName">
+                {{trip.name}}
+                <img id="edit" src="../../public/assets/edit.png" width="35" height="35" @click="goTo(`/editTrip/${trip._id}`)">
+            </h1>
             <p class="date">{{`FROM: ${start_day}/${start_month+1}/${start_year}`}}</p>
             <p class="date">{{`TO: ${end_day}/${end_month+1}/${end_year}`}}</p>
             <p class="country"><span id="countryLabel">Country:</span> {{trip.country}}</p>
@@ -12,6 +15,7 @@
 
 <script>
     import TripService from "../TripService";
+    import router from "../router";
 
     export default {
         name: 'singleTrip',
@@ -30,6 +34,11 @@
                 user_id: '',
             }
         },
+        methods: {
+            goTo(location) {
+                router.push(location);
+            }
+        },
         async created() {
             try {
                 this.username = localStorage.getItem("username");
@@ -40,10 +49,6 @@
 
                 let startDate = this.trip.start_date;
                 let endDate = this.trip.end_date;
-                // eslint-disable-next-line no-console
-                console.log(startDate, 'start');
-                // eslint-disable-next-line no-console
-                console.log(endDate, 'end');
 
                 this.start_day = new Date(startDate).getDate();
                 this.end_day = new Date(endDate).getDate();
@@ -88,5 +93,9 @@
     #countryLabel, #priceLabel {
         font-weight: bolder;
         color: #2c3e50;
+    }
+
+    #edit {
+        cursor: pointer;
     }
 </style>

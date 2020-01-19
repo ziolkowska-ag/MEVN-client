@@ -53,6 +53,17 @@ class TripService {
     static deleteTrip(id) {
         return axios.delete(`${url}${id}`);
     }
+
+    static updateTrip(userId, id, created_by,name, country, price, start_date, end_date) {
+        return axios.patch(`${url}/${userId}/${id}`, {
+            created_by,
+            name,
+            country,
+            price,
+            start_date,
+            end_date,
+        });
+    }
 }
 
 export default TripService;

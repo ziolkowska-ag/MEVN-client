@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div class="post-container">
-            <h1 id="postTitle">{{post.title}}</h1>
+            <h1 id="postTitle">
+                {{post.title}}
+                <img id="edit" src="../../public/assets/edit.png" width="35" height="35">
+            </h1>
             <p class="text">{{post.text}}</p>
         </div>
     </div>
@@ -58,5 +61,9 @@
 
     .text {
         font-size: 18px;
+    }
+
+    #edit {
+        cursor: pointer;
     }
 </style>

@@ -12,6 +12,8 @@ import home from "../components/home";
 import intro from "../components/intro";
 import Vuex from "vuex";
 import pageNotFound from "../components/pageNotFound";
+import editTrip from "../components/editTrip";
+import editPost from "../components/editPost";
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -89,9 +91,21 @@ const router = new VueRouter({
             beforeEnter: requireAuth,
         },
         {
+            path: '/editTrip/:Pid',
+            name: 'editTrip',
+            component: editTrip,
+            beforeEnter: requireAuth,
+        },
+        {
             path: '/addPost',
             name: 'addPost',
             component: newPost,
+            beforeEnter: requireAuth,
+        },
+        {
+            path: '/editPost/:Pid',
+            name: 'editPost',
+            component: editPost,
             beforeEnter: requireAuth,
         },
         {
