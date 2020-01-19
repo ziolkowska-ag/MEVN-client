@@ -11,7 +11,7 @@
                 <textarea id="content" v-model="post.text"/>
             </li>
             <li class="form-row">
-<!--                <button v-on:click="createPost">Create!</button>-->
+                <button v-on:click="editPost">Save changes!</button>
             </li>
         </ul>
     </form>
@@ -19,6 +19,7 @@
 
 <script>
     import PostService from "../PostService";
+    import router from "../router";
 
     export default {
         name: 'edit_post',
@@ -31,7 +32,12 @@
                 user_id: '',
             }
         },
-        methods: {},
+        methods: {
+            editPost() {
+                PostService.updatePost(this.user_id, this.post._id, this.user_id, this.post.title, this.post.text);
+                router.push({name: 'blog'});
+            }
+        },
         async created() {
             this.username = localStorage.getItem("username");
             PostService.getUserId(this.username).then(res => {

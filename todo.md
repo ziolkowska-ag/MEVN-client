@@ -8,7 +8,7 @@
 - ~~form validation~~
 - too many requests on home
 - ~~add PageNotFound~~
-- edit page and trip?
+- ~~edit page and trip?~~
 - ~~searching posts doesnt work~~
 - research quasar on current project, probably too hard to moved this to cli
 - ~~maybe add a home page i.e. BEFORE login/register~~

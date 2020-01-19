@@ -97,5 +97,6 @@
 
     #edit {
         cursor: pointer;
+        padding: 10px;
     }
 </style>

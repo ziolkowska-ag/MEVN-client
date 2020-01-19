@@ -3,7 +3,7 @@
         <div class="post-container">
             <h1 id="postTitle">
                 {{post.title}}
-                <img id="edit" src="../../public/assets/edit.png" width="35" height="35">
+                <img id="edit" src="../../public/assets/edit.png" width="35" height="35" @click="goTo(`/editPost/${post._id}`)">
             </h1>
             <p class="text">{{post.text}}</p>
         </div>
@@ -12,6 +12,7 @@
 
 <script>
     import PostService from "../PostService";
+    import router from "../router";
 
     export default {
         name: 'singlePost',
@@ -23,6 +24,11 @@
                 year: '',
                 username: '',
                 user_id: '',
+            }
+        },
+        methods: {
+            goTo(location) {
+                router.push(location);
             }
         },
         async created() {
@@ -65,5 +71,6 @@
 
     #edit {
         cursor: pointer;
+        padding: 10px;
     }
 </style>

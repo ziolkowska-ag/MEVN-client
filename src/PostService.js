@@ -50,6 +50,14 @@ class PostService {
     static deletePost(id) {
         return axios.delete(`${url}${id}`);
     }
+
+    static updatePost(userId, id, created_by,title, text) {
+        return axios.patch(`${url}/${userId}/${id}`, {
+            created_by,
+            title,
+            text,
+        });
+    }
 }
 
 export default PostService;
