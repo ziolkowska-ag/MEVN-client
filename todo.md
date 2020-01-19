@@ -14,6 +14,6 @@
 - research quasar on current project, probably too hard to moved this to cli
 - ~~maybe add a home page i.e. BEFORE login/register~~
 - ~~if no blog posts exist - render proper message~~
-- render shorter text in /blog to make sense of "read more"
+- ~~render shorter text in /blog to make sense of "read more"~~
 - do something about delete method - too much repeated code
                 // eslint-disable-next-line no-console

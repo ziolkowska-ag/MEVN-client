@@ -21,7 +21,7 @@
             <p class="date">{{`${new Date(post.date).getDate()}/${new Date(post.date).getMonth()+1}/${new
                 Date(post.date).getFullYear()}`}}</p>
             <p class="name">{{post.title}}</p>
-            <p class="text">{{post.text}}</p>
+            <p class="text">{{`${post.text.slice(0, 30)} ...`}}</p>
             <p class="read-more" @click="goToSinglePost(post._id)">Read more</p>
             <button class="delete" @click="deletePost(post._id)">x</button>
         </div>
