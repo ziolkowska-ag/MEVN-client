@@ -9,6 +9,10 @@
             <input type="search" v-on:keyup="searchPost" v-model="searchWord" id="search-post">
         </div>
         <hr>
+        <div class="noPosts" v-if="postsCopy.length <= 0">
+            <p>You currently don't have any posts written in your blog.</p>
+            <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addPost')">POST</a></p>
+        </div>
         <p class="error" v-if="error">{{error}}</p>
         <div class="posts-container" v-for="(post, index) in postsCopy"
              v-bind:item="post"
@@ -72,7 +76,10 @@
             },
             goToSinglePost(id) {
                 router.push({name: 'singlePost', params: {Pid: id}});
-            }
+            },
+            goTo(location) {
+                router.push(location);
+            },
         }
     }
 </script>

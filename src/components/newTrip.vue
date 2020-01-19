@@ -1,5 +1,6 @@
 <template>
     <form class="create-trip">
+        <h1 id="title">{{title}}</h1>
         <ul class="container">
             <li class="form-row">
                 <label for="name">Name:</label>
@@ -32,6 +33,7 @@
         name: 'new_trip',
         data() {
             return {
+                title: 'Add a new trip',
                 error: '',
                 name: '',
                 country: '',
@@ -57,6 +59,14 @@
 </script>
 
 <style scoped>
+    #title {
+        color: #8dd6d0;
+        font-weight: bold;
+        font-size: 57px;
+        text-decoration: underline #2c3e50;
+        padding-bottom: 5px;
+    }
+
     .create-trip {
         padding-top: 2em;
     }
@@ -67,7 +77,7 @@
         border-radius: 5px;
         box-shadow: 0 0 1em #4a6b63;
         max-width: 900px;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
     .form-row {

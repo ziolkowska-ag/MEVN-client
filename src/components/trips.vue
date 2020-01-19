@@ -3,10 +3,14 @@
         <h1>{{title}}</h1>
         <div class="search-trip">
             <label for="search-trip">SEARCH..</label>
-            <input type="search" v-on:keyup="searchTrip" v-model="searchWord" id="search-trip">
+            <input type="search" @keyup="searchTrip" v-model="searchWord" id="search-trip">
         </div>
         <hr>
         <p class="error" v-if="error">{{error}}</p>
+        <div class="noTrips" v-if="tripsCopy.length <= 0">
+            <p>You currently don't have any trips in your journal.</p>
+            <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
+        </div>
         <div class="trips-container" v-for="(trip, index) in tripsCopy"
              v-bind:item="trip"
              v-bind:key="trip._id"
@@ -28,7 +32,7 @@
         name: 'trips',
         data() {
             return {
-                title: 'Travel journal',
+                title: 'All my trips',
                 trips: [],
                 tripsCopy: [],
                 searchWord: '',
@@ -67,6 +71,9 @@
             },
             goToSingleTrip(id) {
                 router.push({name: 'singleTrip', params: {Pid: id}});
+            },
+            goTo(location) {
+                router.push(location);
             }
         }
     }

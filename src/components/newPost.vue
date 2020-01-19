@@ -1,8 +1,9 @@
 <template>
     <form class="create-post">
+        <h1 id="title">{{title}}</h1>
         <ul class="container">
             <li class="form-row">
-                <label for="name">Name:</label>
+                <label for="name">Title:</label>
                 <input type="text" id="name" v-model="name" placeholder="Name your post..">
             </li>
             <li class="form-row">
@@ -24,6 +25,7 @@
         name: 'new_post',
         data() {
             return {
+                title: 'Add a blog post',
                 error: '',
                 name: '',
                 content: '',
@@ -47,6 +49,14 @@
 </script>
 
 <style scoped>
+    #title {
+        color: #8dd6d0;
+        font-weight: bold;
+        font-size: 57px;
+        text-decoration: underline #2c3e50;
+        padding-bottom: 5px;
+    }
+
     .create-post {
         padding-top: 2em;
     }
@@ -58,7 +68,7 @@
         border-radius: 5px;
         box-shadow: 0 0 1em #4a6b63;
         max-width: 900px;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
     .form-row {

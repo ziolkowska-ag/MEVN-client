@@ -1,9 +1,13 @@
 <template>
     <div class="container">
-        <h1>{{title}}</h1>
+        <h1 id="title">{{title}}</h1>
         <hr>
         <p class="error" v-if="error">{{error}}</p>
         <h4>{{subtitle}}</h4>
+        <div class="noTrips" v-if="tripsCopy.length <= 0">
+            <p>You currently don't have any trips in your journal.</p>
+            <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
+        </div>
         <div class="trips-container">
             <carousel :perPage="1"
                       :autoplay="true"
@@ -82,7 +86,7 @@
         margin: auto;
     }
 
-    h1 {
+    #title {
         color: #8dd6d0;
         font-weight: bold;
         font-size: 77px;
