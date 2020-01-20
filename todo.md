@@ -15,4 +15,5 @@
 - ~~if no blog posts exist - render proper message~~
 - ~~render shorter text in /blog to make sense of "read more"~~
 - do something about delete method - too much repeated code
+- implement minimal dates for all forms.
                 // eslint-disable-next-line no-console
