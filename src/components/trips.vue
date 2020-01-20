@@ -8,8 +8,8 @@
         <hr>
         <p class="error" v-if="error">{{error}}</p>
         <div class="noTrips" v-if="tripsCopy.length <= 0">
-            <p>You currently don't have any trips in your journal.</p>
-            <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
+            <p>No matching trips..</p>
+            <p>Change that by adding a new <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
         </div>
         <div class="trips-container" v-for="(trip, index) in tripsCopy"
              v-bind:item="trip"
@@ -81,11 +81,20 @@
 
 
 <style scoped>
+    @media (max-width: 600px) {
+        .read-more {
+            width: 35% !important;
+        }
+    }
+
     .read-more {
         color: #2c3e50;
         cursor: pointer;
         text-decoration: none;
         font-weight: 900;
+        border: 1px solid #2c3e50;
+        width: 25%;
+        margin: 0 auto;
     }
 
     .trips {

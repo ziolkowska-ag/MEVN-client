@@ -16,11 +16,11 @@
             </li>
             <li class="form-row">
                 <label for="start_date">Start Date:</label>
-                <input type="date" id="start_date" v-model="trip.start_date" :min="new Date(today)">
+                <input type="date" id="start_date" v-model="start_date">
             </li>
             <li class="form-row">
                 <label for="end_date">End Date:</label>
-                <input type="date" id="end_date" v-model="trip.end_date" :min="trip.start_date">
+                <input type="date" id="end_date" v-model="end_date">
             </li>
             <li class="form-row">
                 <button v-on:click="editTrip">Save changes!</button>
@@ -39,6 +39,7 @@
             return {
                 title: 'Edit trip',
                 today: '',
+                start_date: '',
                 end_date: '',
                 trip: '',
                 error: '',
@@ -49,7 +50,7 @@
         methods: {
             editTrip() {
                 TripService.updateTrip(this.user_id, this.trip._id, this.user_id, this.trip.name, this.trip.country, this.trip.price,
-                    this.trip.start_date, this.trip.end_date);
+                    this.start_date, this.end_date);
                 router.push({name: 'trips'});
             }
         },
@@ -59,10 +60,25 @@
                 this.user_id = res.id;
                 TripService.getTrip(this.user_id, this.$route.params.Pid).then(trip => {
                     this.trip = trip;
-                    this.today = new Date();
-                });
 
+                    Date.prototype.yyyymmdd = function() {
+                        let mm = this.getMonth() + 1; // getMonth() is zero-based
+                        let dd = this.getDate();
+
+                        return [this.getFullYear(),
+                            (mm>9 ? '' : '0') + mm,
+                            (dd>9 ? '' : '0') + dd
+                        ].join('-');
+                    };
+                    this.today = new Date().yyyymmdd();
+                    document.getElementById("start_date").setAttribute("min", this.today);
+                    this.start_date = new Date(this.trip.start_date).yyyymmdd();
+                    this.end_date = new Date(this.trip.end_date).yyyymmdd();
+                });
             });
+        },
+        async updated() {
+            document.getElementById("end_date").setAttribute("min", this.start_date);
         }
     }
 </script>

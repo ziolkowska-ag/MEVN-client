@@ -51,7 +51,8 @@
         methods: {
             logout() {
                 localStorage.removeItem('usertoken');
-                store.commit("setAuthentication", true);
+                localStorage.removeItem('username');
+                store.commit("setAuthentication", false);
                 router.push({name: 'intro'})
             }
         },

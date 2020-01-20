@@ -10,15 +10,15 @@
         </div>
         <hr>
         <div class="noPosts" v-if="postsCopy.length <= 0">
-            <p>You currently don't have any posts written in your blog.</p>
-            <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addPost')">POST</a></p>
+            <p>No matching trips..</p>
+            <p>Change that by adding a new <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addPost')">POST</a></p>
         </div>
         <p class="error" v-if="error">{{error}}</p>
         <div class="posts-container" v-for="(post, index) in postsCopy"
              v-bind:item="post"
              v-bind:key="post._id"
              v-bind:index="index">
-            <p class="date">{{`${new Date(post.date).getDate()}/${new Date(post.date).getMonth()+1}/${new
+            <p class="date">{{`Created on: ${new Date(post.date).getDate()}/${new Date(post.date).getMonth()+1}/${new
                 Date(post.date).getFullYear()}`}}</p>
             <p class="name">{{post.title}}</p>
             <p class="text">{{`${post.text.slice(0, 30)} ...`}}</p>
@@ -107,6 +107,9 @@
         cursor: pointer;
         text-decoration: none;
         font-weight: 900;
+        border: 1px solid #2c3e50;
+        width: 25%;
+        margin: 0 auto;
     }
 
     .blog {
@@ -165,6 +168,7 @@
 
     p.date {
         font-weight: 700;
+        padding-top: 20px;
     }
 
     .delete {

@@ -103,8 +103,8 @@
         font-size: 14px;
     }
 
-    textarea {
-        height: 20vh;
+    textarea#content {
+        height: 60vh;
     }
 
     .form-row > button {

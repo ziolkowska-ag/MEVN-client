@@ -33,11 +33,18 @@ export const store = new Vuex.Store(
 );
 
 export const requireAuth = (to, from, next) => {
-
     if (store.state.authenticated || store.state.accessToken !== null) {
         next();
     } else {
         next('/login');
+    }
+};
+
+export const requireUnAuth = (to, from, next) => {
+    if (!store.state.authenticated && store.state.accessToken === null) {
+        next();
+    } else {
+        next('/home');
     }
 };
 
@@ -51,7 +58,8 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'intro',
-            component: intro
+            component: intro,
+            beforeEnter: requireUnAuth,
         },
         {
             path: '/home',

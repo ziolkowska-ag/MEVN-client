@@ -13,13 +13,13 @@
 </template>
 
 <script>
-
     import router from "../router";
 
     export default {
         data() {
             return {
                 name: 'Traveljournal',
+                islogged: '',
             }
         },
         methods: {
@@ -27,7 +27,6 @@
                 router.push({name: whereTo});
             }
         }
-
     }
 </script>
 
