@@ -58,6 +58,21 @@
             this.username = localStorage.getItem("username");
             TripService.getUserId(this.username).then(res => {
                 this.user_id = res.id;
+
+                Date.prototype.yyyymmdd = function() {
+                    let mm = this.getMonth() + 1; // getMonth() is zero-based
+                    let dd = this.getDate();
+
+                    return [this.getFullYear(),
+                        (mm>9 ? '' : '0') + mm,
+                        (dd>9 ? '' : '0') + dd
+                    ].join('-');
+                };
+
+                this.start_date = new Date().yyyymmdd();
+                document.getElementById("start_date").setAttribute("min", this.start_date);
+                this.end_date = new Date().yyyymmdd();
+                document.getElementById("end_date").setAttribute("min", this.end_date);
             });
         }
     }
