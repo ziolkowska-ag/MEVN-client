@@ -3,15 +3,15 @@
         <h1 id="title">{{title}}</h1>
         <ul class="container">
             <li class="form-row">
-                <label for="name">Title:</label>
+                <label for="name">TITLE:</label>
                 <input type="text" id="name" v-model="post.title">
             </li>
             <li class="form-row">
-                <label for="content">Content:</label>
+                <label for="content">CONTENT:</label>
                 <textarea id="content" v-model="post.text"/>
             </li>
             <li class="form-row">
-                <button v-on:click="editPost">Save changes!</button>
+                <button v-on:click="editPost">SAVE CHANGES!</button>
             </li>
         </ul>
     </form>
@@ -90,9 +90,9 @@
     .form-row > label {
         padding: .5em .5em .5em 0;
         flex: 1;
-        font-weight: bold;
         color: #4a6b63;
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 0;
     }
 
     .form-row > input, textarea {
@@ -111,7 +111,6 @@
         background-color: #4a6b63;
         color: whitesmoke;
         margin-top: 25px;
-        font-weight: bold;
         font-size: 14px;
         border: 1px solid #4a6b63;
         border-radius: 5px;

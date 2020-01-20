@@ -17,7 +17,7 @@
              v-bind:index="index">
             <p class="name">{{trip.name}}</p>
             <p class="country">{{trip.country}}</p>
-            <p class="read-more" @click="goToSingleTrip(trip._id)">Learn more</p>
+            <p class="read-more" @click="goToSingleTrip(trip._id)">LEARN MORE</p>
             <button class="delete" @click="deleteTrip(trip._id)">x</button>
         </div>
     </div>
@@ -91,7 +91,7 @@
         color: #2c3e50;
         cursor: pointer;
         text-decoration: none;
-        font-weight: 900;
+        font-weight: 700;
         border: 1px solid #2c3e50;
         width: 25%;
         margin: 0 auto;

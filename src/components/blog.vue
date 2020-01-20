@@ -2,7 +2,7 @@
     <div class="blog">
         <h1 id="title">{{title}}</h1>
         <div class="new-post">
-            <router-link class="new-post-btn" to="/addPost">Add New Post</router-link>
+            <router-link class="new-post-btn" to="/addPost">ADD NEW POST</router-link>
         </div>
         <div class="search-post">
             <label for="search-post">SEARCH..</label>
@@ -21,8 +21,8 @@
             <p class="date">{{`Created on: ${new Date(post.date).getDate()}/${new Date(post.date).getMonth()+1}/${new
                 Date(post.date).getFullYear()}`}}</p>
             <p class="name">{{post.title}}</p>
-            <p class="text">{{`${post.text.slice(0, 30)} ...`}}</p>
-            <p class="read-more" @click="goToSinglePost(post._id)">Read more</p>
+            <p class="text">{{`${post.text.slice(0, 50)} ...`}}</p>
+            <p class="read-more" @click="goToSinglePost(post._id)">READ MORE</p>
             <button class="delete" @click="deletePost(post._id)">x</button>
         </div>
     </div>
@@ -93,12 +93,11 @@
     .new-post-btn {
         background-color: #2c3e50;
         color: whitesmoke;
-        font-weight: bold;
         font-size: 14px;
         border: 1px solid #4a6b63;
         border-radius: 5px;
         width: 30%;
-        padding: 5px;
+        padding: 10px;
         text-decoration: none;
     }
 
@@ -106,7 +105,7 @@
         color: #2c3e50;
         cursor: pointer;
         text-decoration: none;
-        font-weight: 900;
+        font-weight: 700;
         border: 1px solid #2c3e50;
         width: 25%;
         margin: 0 auto;

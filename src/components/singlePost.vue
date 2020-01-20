@@ -63,6 +63,7 @@
         color: #2c3e50;
         font-weight: bold;
         font-size: 35px;
+        margin-bottom: 30px;
     }
 
     .text {

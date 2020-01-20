@@ -3,27 +3,27 @@
         <h1 id="title">{{title}}</h1>
         <ul class="container">
             <li class="form-row">
-                <label for="name">Name:</label>
+                <label for="name">NAME:</label>
                 <input type="text" id="name" v-model="trip.name">
             </li>
             <li class="form-row">
-                <label for="country">Country:</label>
+                <label for="country">COUNTRY:</label>
                 <input type="text" id="country" v-model="trip.country">
             </li>
             <li class="form-row">
-                <label for="price">Price:</label>
+                <label for="price">PRICE:</label>
                 <input type="text" id="price" v-model="trip.price">
             </li>
             <li class="form-row">
-                <label for="start_date">Start Date:</label>
+                <label for="start_date">START DATE:</label>
                 <input type="date" id="start_date" v-model="start_date">
             </li>
             <li class="form-row">
-                <label for="end_date">End Date:</label>
+                <label for="end_date">END DATE:</label>
                 <input type="date" id="end_date" v-model="end_date">
             </li>
             <li class="form-row">
-                <button v-on:click="editTrip">Save changes!</button>
+                <button v-on:click="editTrip">SAVE CHANGES!</button>
             </li>
         </ul>
     </form>
@@ -121,9 +121,9 @@
     .form-row > label {
         padding: .5em .5em .5em 0;
         flex: 1;
-        font-weight: bold;
         color: #4a6b63;
-        font-size: 20px;
+        margin-bottom: 0;
+        font-size: 18px;
     }
 
     .form-row > input, .form-row > datepicker {
@@ -138,7 +138,6 @@
         background-color: #4a6b63;
         color: whitesmoke;
         margin-top: 25px;
-        font-weight: bold;
         font-size: 14px;
         border: 1px solid #4a6b63;
         border-radius: 5px;
