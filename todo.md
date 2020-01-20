@@ -6,7 +6,7 @@
     - ~~render posts based on condition: currentUser === (done)post.createdBy~~
 - ~~change date of trip to allow from-to~~
 - ~~form validation~~
-- too many requests on home
+-~~too many requests on home~~
 - ~~add PageNotFound~~
 - ~~edit page and trip?~~
 - ~~searching posts doesnt work~~

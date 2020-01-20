@@ -16,11 +16,11 @@
             </li>
             <li class="form-row">
                 <label for="start_date">Start Date:</label>
-                <input type="text" id="start_date" v-model="trip.start_date">
+                <input type="date" id="start_date" v-model="trip.start_date" :min="new Date(today)">
             </li>
             <li class="form-row">
                 <label for="end_date">End Date:</label>
-                <input type="text" id="end_date" v-model="trip.end_date">
+                <input type="date" id="end_date" v-model="trip.end_date" :min="trip.start_date">
             </li>
             <li class="form-row">
                 <button v-on:click="editTrip">Save changes!</button>
@@ -38,6 +38,8 @@
         data() {
             return {
                 title: 'Edit trip',
+                today: '',
+                end_date: '',
                 trip: '',
                 error: '',
                 username: '',
@@ -57,6 +59,7 @@
                 this.user_id = res.id;
                 TripService.getTrip(this.user_id, this.$route.params.Pid).then(trip => {
                     this.trip = trip;
+                    this.today = new Date();
                 });
 
             });
