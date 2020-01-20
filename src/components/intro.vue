@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <img id="logo" class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="300" width="300">
+        <img id="logo" class="icon" src="../../public/assets/favicon.png" alt="Globe traveller" height="300"
+             width="300">
         <p id="pageTitle">{{name}}</p>
         <div class="btns">
             <button class="btn-lg btn-block" @click="goTo('register')">Get started!</button>
@@ -8,6 +9,12 @@
         </div>
         <footer id="footer">
             @Traveljournal 2020 by Agnieszka Ziolkowska and Jakub Górka
+            <div class="icons">
+                Icons made by <a href="https://www.flaticon.com/authors/kiranshastry"
+                                 title="Kiranshastry">Kiranshastry</a>, <a
+                    href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+                    href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+            </div>
         </footer>
     </div>
 </template>

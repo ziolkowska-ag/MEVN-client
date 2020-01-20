@@ -101,7 +101,7 @@
 
     .form-row > button {
         background-color: #4a6b63;
-        color: white;
+        color: whitesmoke;
         margin-top: 25px;
         font-weight: bold;
         font-size: 14px;

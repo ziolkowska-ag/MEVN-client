@@ -4,7 +4,7 @@
         <h1 id="title">{{title}}</h1>
         <hr>
         <p class="error" v-if="error">{{error}}</p>
-        <h4 id="subtitle">{{subtitle}}</h4>
+        <h4 class="subtitle">{{subtitle1}}</h4>
         <div class="noTrips" v-if="tripsCopy.length <= 0">
             <p>You currently don't have any trips in your journal.</p>
             <p>Change that by adding your first <a style="cursor: pointer; font-weight: bolder; color:#8dd6d0; font-size: larger" @click="goTo('addTrip')">TRIP</a></p>
@@ -13,6 +13,7 @@
             <carousel :perPage="1"
                       :autoplay="true"
                       :loop="true"
+                      :speed="1500"
                       pagination-active-color="#2c3e50">
                 <slide v-for="(trip, index) in tripsCopy"
                        v-bind:item="trip"
@@ -22,11 +23,31 @@
                     <div class="slide-content">
                         <p class="date">{{`Leaving on: ${new Date(trip.start_date).getDate()}/${new Date(trip.start_date).getMonth()+1}/${new
                             Date(trip.start_date).getFullYear()}`}}</p>
-                        <p class="name" @click="goTo(`singleTrip/${trip._id}`)">{{trip.name}}</p>
+                        <p class="name" @click="goTo(`singleTrip/${trip._id}`)">{{trip.name.toUpperCase()}}</p>
                     </div>
                 </slide>
             </carousel>
         </div>
+        <hr>
+        <h4 class="subtitle">{{subtitle2}}</h4>
+        <div class="posts-container">
+            <carousel :perPage="1"
+                      :autoplay="true"
+                      :loop="true"
+                      :speed="1500"
+                      pagination-active-color="#2c3e50">
+                <slide v-for="(post, index) in postsCopy"
+                       v-bind:item="post"
+                       v-bind:key="post._id"
+                       v-bind:index="index"
+                >
+                    <div class="slide-content">
+                       <p class="postTitle" @click="goTo(`singlePost/${post._id}`)">{{post.title.toUpperCase()}}</p>
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+        <hr>
     </div>
 </template>
 
@@ -34,6 +55,7 @@
     import TripService from "../TripService";
     import {Carousel, Slide} from 'vue-carousel';
     import router from "../router";
+    import PostService from "../PostService";
 
     export default {
         name: 'trips',
@@ -44,9 +66,12 @@
         data() {
             return {
                 title: 'Travel journal',
-                subtitle: 'Trips coming up this month:',
+                subtitle1: 'Trips coming up this month:',
+                subtitle2: 'Blog posts added this month:',
                 trips: [],
+                posts: [],
                 tripsCopy: [],
+                postsCopy: [],
                 error: '',
                 username: '',
                 user_id: '',
@@ -59,10 +84,15 @@
                     this.user_id = res.id;
                 });
                 this.trips = await TripService.getTrips(this.user_id);
+                this.posts = await PostService.getPosts(this.user_id);
                 this.tripsCopy = this.trips.filter(trip => new Date(trip.start_date).getMonth() === new Date().getMonth())
                     .sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
                 });
+                this.postsCopy = this.posts.filter(post => new Date(post.date).getMonth() === new Date().getMonth())
+                    .sort((a, b) => {
+                        return new Date(a.date) - new Date(b.date);
+                    });
             } catch (error) {
                 this.error = error.message;
             }
@@ -81,9 +111,23 @@
         padding-top: 2rem;
     }
 
-    .trips-container {
+    .trips-container, .posts-container {
         max-width: 700px;
-        margin: auto;
+        margin: 10px auto;
+    }
+
+    .postTitle {
+        padding-top: 15px;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 0;
+        cursor: pointer;
+        color: whitesmoke;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
     }
 
     #title {
@@ -112,12 +156,13 @@
         border-radius: 5px;
         box-shadow: 0 0 1em #4a6b63;
         background-color: #8dd6d0;
-        margin: 15px 0;
+        margin: 15px 0 0 0;
         height: 20vh;
     }
 
-    #subtitle {
+    .subtitle {
         color: #2c3e50;
+        margin-top: 40px;
     }
 
     p.name {
@@ -126,7 +171,7 @@
         font-weight: 700;
         margin-bottom: 0;
         cursor: pointer;
-        color: white;
+        color: whitesmoke;
         position: absolute;
         top: 50%;
         left: 50%;

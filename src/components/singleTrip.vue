@@ -87,7 +87,7 @@
 
     .date {
         font-size: 18px;
-        color: white;
+        color: whitesmoke;
     }
 
     #countryLabel, #priceLabel {

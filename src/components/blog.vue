@@ -173,7 +173,7 @@
 
     .delete {
         background-color: #e3063b;
-        color: white;
+        color: whitesmoke;
         font-weight: 900;
         border: 1px solid #e3063b;
         border-radius: 5px;

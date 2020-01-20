@@ -12,25 +12,25 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbar1">
             <ul class="navbar-nav">
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/home">Home</router-link>
+                    <router-link class="nav-link" to="/home">HOME</router-link>
                 </li>
                 <li v-if="auth !== 'loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/login">Login</router-link>
+                    <router-link class="nav-link" to="/login">LOGIN</router-link>
                 </li>
                 <li v-if="auth !== 'loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/register">Register</router-link>
+                    <router-link class="nav-link" to="/register">REGISTER</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/blog">Blog</router-link>
+                    <router-link class="nav-link" to="/blog">BLOG</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/addTrip">Add trip</router-link>
+                    <router-link class="nav-link" to="/addTrip">ADD TRIP</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/trips">Trips</router-link>
+                    <router-link class="nav-link" to="/trips">TRIPS</router-link>
                 </li>
                 <li v-if="auth ==='loggedin'" class="nav-item">
-                    <a href="" class="nav-link" v-on:click="logout">Logout</a>
+                    <a href="" class="nav-link" v-on:click="logout">LOGOUT</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +53,7 @@
                 localStorage.removeItem('usertoken');
                 localStorage.removeItem('username');
                 store.commit("setAuthentication", false);
-                router.push({name: 'intro'})
+                router.push({path: '/'})
             }
         },
         created() {
@@ -70,5 +70,15 @@
 <style>
     .navbar {
         background-color: #8dd6d0;
+        font-size: 20px;
+    }
+
+    ul > li {
+        margin: 0 15px;
+    }
+
+    ul > li:hover {
+        color: #2c3e50;
+        font-weight: bolder;
     }
 </style>
