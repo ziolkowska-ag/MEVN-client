@@ -31,11 +31,12 @@
                 content: '',
                 user_id: '',
                 username: '',
+                postImage: '',
             }
         },
         methods: {
             createPost() {
-                PostService.createPost(this.name, this.content, new Date(), this.user_id);
+                PostService.createPost(this.name, this.content, new Date(), this.user_id, this.postImage);
                 router.push({name: 'blog'})
             }
         },

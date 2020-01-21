@@ -43,7 +43,7 @@ class PostService {
             created_by,
             title,
             text,
-            date
+            date,
         });
     }
 
